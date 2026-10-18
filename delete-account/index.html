@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Delete your Police Chase account and cloud save.">
+<meta name="robots" content="noindex">
+<title>Delete Police Chase Account</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@1,700;1,800&family=Public+Sans:wght@400;600;700&display=swap">
+<style>
+  :root {
+    --bg: #f6f7fb; --fg: #161a2b; --muted: #5a6078; --line: #dfe2ec; --panel: #ffffff;
+    --field: #f1f3f9; --red: #d8283a; --blue: #2a5fe0; --ok: #1f8a4c;
+    --display: "Barlow Condensed", "Arial Narrow", Arial, sans-serif;
+    --body: "Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0b0e1c; --fg: #e9ecf6; --muted: #9aa1bb; --line: #252a42; --panel: #12162a;
+      --field: #0e1224; --red: #ff4b5c; --blue: #5b8cff; --ok: #3ccf7a; color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0b0e1c; --fg: #e9ecf6; --muted: #9aa1bb; --line: #252a42; --panel: #12162a;
+    --field: #0e1224; --red: #ff4b5c; --blue: #5b8cff; --ok: #3ccf7a; color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 16px; line-height: 1.6; }
+  .stripe { display: grid; grid-template-columns: 1fr 1fr; height: 6px; }
+  .stripe span:first-child { background: var(--red); }
+  .stripe span:last-child { background: var(--blue); }
+  main {
+    max-width: 34rem; margin: 0 auto; padding-block: 2.5rem 4rem;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    display: grid; gap: 1.75rem;
+  }
+  header { display: grid; gap: .4rem; }
+  .eyebrow { font-size: .78rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+  h1 { font-family: var(--display); font-style: italic; font-weight: 800; font-size: clamp(2.3rem, 8vw, 3.2rem); line-height: 1; margin: 0; text-wrap: balance; }
+  h1 em { font-style: italic; color: var(--red); }
+  h2 { font-family: var(--display); font-style: italic; font-weight: 700; font-size: 1.5rem; line-height: 1.1; margin: 0 0 .5rem; }
+  p { margin: 0 0 .75rem; }
+  ul { margin: 0 0 .75rem; padding-left: 1.2rem; }
+  li { margin-bottom: .3rem; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 1.4rem 1.3rem; }
+  form { display: grid; gap: 1rem; }
+  label { display: grid; gap: .35rem; font-weight: 600; font-size: .95rem; }
+  input[type=text], input[type=password] {
+    font: inherit; color: var(--fg); background: var(--field);
+    border: 1px solid var(--line); border-radius: 8px; padding: .75rem .85rem; width: 100%;
+  }
+  input:focus-visible { outline: 2px solid var(--blue); outline-offset: 1px; border-color: transparent; }
+  .check { display: grid; grid-template-columns: 1.2rem 1fr; gap: .6rem; align-items: start; font-weight: 400; }
+  .check input { width: 1.1rem; height: 1.1rem; margin-top: .2rem; accent-color: var(--red); }
+  button {
+    font: inherit; font-weight: 700; letter-spacing: .02em; cursor: pointer;
+    background: var(--red); color: #fff; border: 0; border-radius: 8px; padding: .85rem 1rem; min-height: 48px;
+  }
+  button:disabled { opacity: .5; cursor: not-allowed; }
+  button:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+  .msg { border-radius: 8px; padding: .75rem .9rem; font-size: .95rem; display: none; }
+  .msg.show { display: block; }
+  .msg.err { background: color-mix(in srgb, var(--red) 12%, transparent); border: 1px solid color-mix(in srgb, var(--red) 40%, transparent); }
+  .msg.info { background: color-mix(in srgb, var(--blue) 10%, transparent); border: 1px solid color-mix(in srgb, var(--blue) 35%, transparent); }
+  .done { display: none; text-align: center; }
+  .done.show { display: block; }
+  .done .tick { width: 56px; height: 56px; border-radius: 50%; background: var(--ok); color: #fff; display: grid; place-items: center; margin: 0 auto .8rem; font-size: 1.8rem; font-weight: 700; }
+  .muted { color: var(--muted); font-size: .92rem; }
+  a { color: var(--blue); text-underline-offset: 2px; }
+  .contact { font-weight: 600; user-select: all; }
+</style>
+</head>
+<body>
+<div class="stripe" aria-hidden="true"><span></span><span></span></div>
+<main>
+  <header>
+    <div class="eyebrow">Police Chase &middot; Account</div>
+    <h1>Delete your <em>account</em></h1>
+  </header>
+
+  <section>
+    <p>Log in below to permanently delete your Police Chase account. This removes:</p>
+    <ul>
+      <li>your username and password</li>
+      <li>your cloud save: coins, cars, upgrades, paint and best score</li>
+    </ul>
+    <p class="muted">This can't be undone. Purchases made through Google Play stay in your Google Play order history, which is managed by Google. Progress saved on your phone is removed when you uninstall the game.</p>
+  </section>
+
+  <div class="card">
+    <form id="form" novalidate>
+      <label>Username
+        <input type="text" id="user" autocomplete="username" autocapitalize="none" spellcheck="false" maxlength="20" required>
+      </label>
+      <label>Password
+        <input type="password" id="pass" autocomplete="current-password" maxlength="30" required>
+      </label>
+      <label class="check">
+        <input type="checkbox" id="confirm">
+        <span>I understand my account and progress will be deleted forever.</span>
+      </label>
+      <div class="msg" id="msg" role="status" aria-live="polite"></div>
+      <button type="submit" id="go">Delete my account</button>
+    </form>
+
+    <div class="done" id="done">
+      <div class="tick" aria-hidden="true">&#10003;</div>
+      <h2>Account deleted</h2>
+      <p>Your Police Chase account and its cloud save have been deleted.</p>
+      <p class="muted">If the game is still installed, it will start you as a new guest next time you open it.</p>
+    </div>
+  </div>
+
+  <section>
+    <h2>Played as a guest, or can't log in?</h2>
+    <p>Email <span class="contact">contact@jhaayush.com</span> with the subject "Delete my Police Chase account". Include your username, or say you played as a guest and when you last played. We delete the account and its cloud save within 30 days and reply to confirm.</p>
+    <p class="muted"><a href="/">Privacy policy</a></p>
+  </section>
+</main>
+
+<script>
+(function () {
+  var PROJECT = "7161b25f-b3fc-4dc2-b969-a259ddf4a21b";
+  var AUTH = "https://player-auth.services.api.unity.com/v1";
+  var SAVE = "https://cloud-save.services.api.unity.com/v1/data/projects/" + PROJECT + "/players/";
+
+  var form = document.getElementById("form");
+  var msg = document.getElementById("msg");
+  var go = document.getElementById("go");
+
+  function show(text, kind) {
+    msg.textContent = text;
+    msg.className = "msg show " + (kind || "err");
+  }
+
+  function headers(token) {
+    var h = { "Content-Type": "application/json", "ProjectId": PROJECT, "UnityEnvironment": "production" };
+    if (token) h.Authorization = "Bearer " + token;
+    return h;
+  }
+
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault();
+    var user = document.getElementById("user").value.trim();
+    var pass = document.getElementById("pass").value;
+    if (!user || !pass) { show("Enter your username and password."); return; }
+    if (!document.getElementById("confirm").checked) { show("Tick the box to confirm you want to delete your account."); return; }
+
+    go.disabled = true;
+    go.textContent = "Deleting...";
+    show("Logging in...", "info");
+    try {
+      var r = await fetch(AUTH + "/authentication/usernamepassword/sign-in", {
+        method: "POST", headers: headers(), body: JSON.stringify({ username: user, password: pass })
+      });
+      if (!r.ok) {
+        show(r.status === 400 || r.status === 401 || r.status === 404
+          ? "Wrong username or password. Check them and try again."
+          : "Couldn't reach the server (error " + r.status + "). Please try again later.");
+        return;
+      }
+      var s = await r.json();
+      var token = s.idToken, player = s.userId || (s.user && s.user.id);
+      if (!token || !player) { show("Something went wrong logging in. Please try again, or email us."); return; }
+
+      show("Deleting your saved progress...", "info");
+      try {
+        await fetch(SAVE + encodeURIComponent(player) + "/items/progress", { method: "DELETE", headers: headers(token) });
+      } catch (_) { /* the account deletion below also removes player data */ }
+
+      show("Deleting your account...", "info");
+      var d = await fetch(AUTH + "/users/" + encodeURIComponent(player), { method: "DELETE", headers: headers(token) });
+      if (!d.ok && d.status !== 404) {
+        show("Couldn't delete the account (error " + d.status + "). Please try again, or email contact@jhaayush.com.");
+        return;
+      }
+      form.style.display = "none";
+      document.getElementById("done").className = "done show";
+    } catch (err) {
+      show("Couldn't connect. Check your internet and try again, or email contact@jhaayush.com.");
+    } finally {
+      document.getElementById("pass").value = "";
+      go.disabled = false;
+      go.textContent = "Delete my account";
+    }
+  });
+})();
+</script>
+</body>
+</html>
