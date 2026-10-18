@@ -156,6 +156,202 @@
     <ul>
       <li><strong>Ads personalisation:</strong> you can reset your advertising ID or opt out of personalised ads in your phone's settings, under Google &rsaquo; Ads (or Privacy &rsaquo; Ads on some phones).</li>
       <li><strong>Remove ads:</strong> buying "No Ads" in the game turns off the ads that play between runs.</li>
+      <li><strong>Delete your data:</strong> uninstalling the game deletes what's on your phone. To delete your account and cloud backup as well, see <a href="#delete-account">Delete your account and data</a> below.</li>
+    </ul>
+  </section>
+
+  <section id="delete-account">
+    <h2>Delete your account and data</h2>
+    <p>You can ask us to delete your Police Chase account and everything saved in the cloud for it (coins, cars, upgrades and best score).</p>
+    <ul>
+      <li>Email <span class="contact">contact@jhaayush.com</span> with the subject "Delete my Police Chase account".</li>
+      <li>Include your in-game username. If you played as a guest, say so and include the date you last played.</li>
+      <li>We delete the account, its username and its cloud save within 30 days and reply to confirm.</li>
+    </ul>
+    <p>Progress stored only on your phone is removed when you uninstall the game. Purchases made through Google Play stay in your Google Play order history, which is managed by Google.</p>
+  </section>
+
+  <section>
+    <h2>Children</h2>
+    <p>Police Chase is not directed at children under 13, and we don't knowingly collect personal information from them. If you believe a child has given personal information through the game, contact us and we will help remove it.</p>
+  </section>
+
+  <section>
+    <h2>Security</h2>
+    <p>Information sent between the game and Google's and Unity's services is encrypted in transit. Progress saved on your phone is protected by your phone's own security.</p>
+  </section>
+
+  <section>
+    <h2>Changes to this policy</h2>
+    <p>If we change how the game handles information, we will update this page and change the effective date at the top.</p>
+  </section>
+
+  <section>
+    <h2>Contact</h2>
+    <p>Questions about this policy or your data can be sent to <span class="contact">contact@jhaayush.com</span>.</p>
+  </section>
+</main>
+
+</body>
+</html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Privacy policy for the Police Chase Android game.">
+<title>Police Chase Privacy Policy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@1,700;1,800&family=Public+Sans:wght@400;600;700&display=swap">
+<style>
+  /* Layout: one readable column, a siren stripe up top, facts first, then the details */
+  :root {
+    --bg: #f6f7fb;
+    --fg: #161a2b;
+    --muted: #5a6078;
+    --line: #dfe2ec;
+    --panel: #ffffff;
+    --red: #d8283a;
+    --blue: #2a5fe0;
+    --display: "Barlow Condensed", "Arial Narrow", Arial, sans-serif;
+    --body: "Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0b0e1c; --fg: #e9ecf6; --muted: #9aa1bb; --line: #252a42; --panel: #12162a;
+      --red: #ff4b5c; --blue: #5b8cff; color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0b0e1c; --fg: #e9ecf6; --muted: #9aa1bb; --line: #252a42; --panel: #12162a;
+    --red: #ff4b5c; --blue: #5b8cff; color-scheme: dark;
+  }
+  *{box-sizing:border-box}
+  body { margin: 0;
+    background: var(--bg); color: var(--fg);
+    font-family: var(--body); font-size: 16px; line-height: 1.65;
+  }
+  .stripe { display: grid; grid-template-columns: 1fr 1fr; height: 6px; }
+  .stripe span:first-child { background: var(--red); }
+  .stripe span:last-child { background: var(--blue); }
+  main {
+    max-width: 44rem; margin: 0 auto;
+    padding-block: 2.5rem 4rem;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    display: grid; gap: 2rem;
+  }
+  header { display: grid; gap: .4rem; }
+  .eyebrow { font-size: .78rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+  h1 {
+    font-family: var(--display); font-style: italic; font-weight: 800;
+    font-size: clamp(2.4rem, 7vw, 3.4rem); line-height: 1; margin: 0; text-wrap: balance;
+  }
+  h1 em { font-style: italic; color: var(--red); }
+  .meta { color: var(--muted); font-size: .92rem; }
+  h2 {
+    font-family: var(--display); font-style: italic; font-weight: 700;
+    font-size: 1.6rem; line-height: 1.1; margin: 0 0 .5rem; text-wrap: balance;
+  }
+  section p, section ul { margin: 0 0 .75rem; }
+  section ul { padding-left: 1.2rem; }
+  li { margin-bottom: .35rem; }
+  .summary {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 10px;
+    padding: 1.1rem 1.25rem; display: grid; gap: .6rem;
+  }
+  .summary h2 { margin-bottom: 0; }
+  .facts { list-style: none; padding: 0; margin: 0; display: grid; gap: .55rem; }
+  .facts li { display: grid; grid-template-columns: 1.1rem 1fr; gap: .6rem; margin: 0; }
+  .dot { width: .6rem; height: .6rem; border-radius: 50%; margin-top: .55rem; background: var(--blue); }
+  .facts li:nth-child(odd) .dot { background: var(--red); }
+  .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; }
+  table { border-collapse: collapse; width: 100%; min-width: 30rem; font-size: .94rem; }
+  th, td { text-align: left; padding: .65rem .85rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-size: .75rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); background: var(--panel); }
+  tr:last-child td { border-bottom: 0; }
+  a { color: var(--blue); text-underline-offset: 2px; }
+  a:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; border-radius: 2px; }
+  code { font-size: .92em; }
+  .contact { font-weight: 600; user-select: all; }
+</style>
+</head>
+<body>
+
+<div class="stripe" aria-hidden="true"><span></span><span></span></div>
+<main>
+  <header>
+    <div class="eyebrow">Privacy policy</div>
+    <h1>Police <em>Chase</em></h1>
+    <div class="meta">Android game by Ayush &middot; package <code>com.ayush.policechase</code> &middot; effective 18 October 2026</div>
+  </header>
+
+  <div class="summary">
+    <h2>The short version</h2>
+    <ul class="facts">
+      <li><span class="dot"></span><span>We never ask for your name, email or phone number. An account is optional and only needs a username and password.</span></li>
+      <li><span class="dot"></span><span>Your coins, cars, upgrades and best score are saved on your phone and backed up to the cloud so you can get them back.</span></li>
+      <li><span class="dot"></span><span>The game shows ads from Google AdMob, which uses your device's advertising ID.</span></li>
+      <li><span class="dot"></span><span>Purchases are handled by Google Play. We never see your card or bank details.</span></li>
+    </ul>
+  </div>
+
+  <section>
+    <h2>Who we are</h2>
+    <p>Police Chase is made by Ayush, an independent developer ("we", "us"). This policy explains what information the game and the services built into it collect when you play, and the choices you have.</p>
+  </section>
+
+  <section>
+    <h2>Your progress and cloud backup</h2>
+    <p>To keep your progress, the game saves your coins, unlocked cars, paint and upgrade choices, best score and whether you bought "No Ads". This is stored on your phone and also backed up with Unity Cloud Save, so you can get it back if you delete the game or change phones.</p>
+    <p>When you first open the game, Unity Authentication gives you a random guest player ID. Your backup is linked to that ID. It contains only game progress, nothing that identifies you.</p>
+  </section>
+
+  <section>
+    <h2>Accounts (optional)</h2>
+    <p>You can create an account with a username and password to restore your progress on another install. You choose the username; please don't use your real name or email address. Your password is handled by Unity Authentication and is never visible to us.</p>
+    <p>You can play without an account. Guest progress is still backed up, but can only be restored on the same install.</p>
+  </section>
+
+  <section>
+    <h2>Services from other companies</h2>
+    <p>The game uses these services, which collect information under their own privacy policies:</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Service</th><th>What it's for</th><th>What it may collect</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>Google AdMob</strong></td>
+            <td>Showing ads between runs and rewarded ads (for example, to revive or double coins)</td>
+            <td>Advertising ID, IP address, approximate location, device and app information, and how you interact with ads</td>
+          </tr>
+          <tr>
+            <td><strong>Google Play Billing</strong></td>
+            <td>Buying "No Ads", coins and cars</td>
+            <td>Purchase details, handled by Google. The game only receives confirmation that a purchase went through.</td>
+          </tr>
+          <tr>
+            <td><strong>Unity Authentication &amp; Cloud Save</strong></td>
+            <td>Guest player ID, optional username/password accounts, and backing up your game progress</td>
+            <td>Player ID, username (if you make an account), a secure version of your password, game progress, IP address and basic device information</td>
+          </tr>
+          <tr>
+            <td><strong>Unity</strong></td>
+            <td>The game engine the game is built with</td>
+            <td>Basic technical data such as device model, operating system and crash information</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Read more in <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's privacy policy</a>, <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">how Google uses data from apps that use its services</a> and <a href="https://unity.com/legal/game-player-and-app-user-privacy-policy" target="_blank" rel="noopener">Unity's player privacy policy</a>.</p>
+  </section>
+
+  <section>
+    <h2>Your choices</h2>
+    <ul>
+      <li><strong>Ads personalisation:</strong> you can reset your advertising ID or opt out of personalised ads in your phone's settings, under Google &rsaquo; Ads (or Privacy &rsaquo; Ads on some phones).</li>
+      <li><strong>Remove ads:</strong> buying "No Ads" in the game turns off the ads that play between runs.</li>
       <li><strong>Delete your data:</strong> uninstalling the game deletes what's on your phone. To delete your account and cloud backup as well, email us with your username (or say you played as a guest) and we will delete them within 30 days.</li>
     </ul>
   </section>
