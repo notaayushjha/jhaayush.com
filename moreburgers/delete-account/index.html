@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="How to delete your More Burgers data.">
+<title>Delete your More Burgers data</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@1,700;1,800&family=Public+Sans:wght@400;600;700&display=swap">
+<style>
+  /* Same layout as the Police Chase policy: one readable column, a stripe up top, facts first, then the details */
+  :root {
+    --bg: #fbf8f3;
+    --fg: #22180f;
+    --muted: #6b5d4f;
+    --line: #ebe2d5;
+    --panel: #ffffff;
+    --red: #e2392e;
+    --gold: #e8a512;
+    --link: #c2410c;
+    --display: "Barlow Condensed", "Arial Narrow", Arial, sans-serif;
+    --body: "Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #17110b; --fg: #f5ede3; --muted: #b3a493; --line: #33281d; --panel: #211910;
+      --red: #ff5a4e; --gold: #ffc43d; --link: #ff9f5a; color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #17110b; --fg: #f5ede3; --muted: #b3a493; --line: #33281d; --panel: #211910;
+    --red: #ff5a4e; --gold: #ffc43d; --link: #ff9f5a; color-scheme: dark;
+  }
+  *{box-sizing:border-box}
+  body { margin: 0;
+    background: var(--bg); color: var(--fg);
+    font-family: var(--body); font-size: 16px; line-height: 1.65;
+  }
+  .stripe { display: grid; grid-template-columns: 1fr 1fr; height: 6px; }
+  .stripe span:first-child { background: var(--red); }
+  .stripe span:last-child { background: var(--gold); }
+  main {
+    max-width: 44rem; margin: 0 auto;
+    padding-block: 2.5rem 4rem;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    display: grid; gap: 2rem;
+  }
+  header { display: grid; gap: .4rem; }
+  .eyebrow { font-size: .78rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+  h1 {
+    font-family: var(--display); font-style: italic; font-weight: 800;
+    font-size: clamp(2.4rem, 7vw, 3.4rem); line-height: 1; margin: 0; text-wrap: balance;
+  }
+  h1 em { font-style: italic; color: var(--red); }
+  .meta { color: var(--muted); font-size: .92rem; }
+  h2 {
+    font-family: var(--display); font-style: italic; font-weight: 700;
+    font-size: 1.6rem; line-height: 1.1; margin: 0 0 .5rem; text-wrap: balance;
+  }
+  section p, section ul { margin: 0 0 .75rem; }
+  section ul { padding-left: 1.2rem; }
+  li { margin-bottom: .35rem; }
+  .summary {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 10px;
+    padding: 1.1rem 1.25rem; display: grid; gap: .6rem;
+  }
+  .summary h2 { margin-bottom: 0; }
+  .facts { list-style: none; padding: 0; margin: 0; display: grid; gap: .55rem; }
+  .facts li { display: grid; grid-template-columns: 1.1rem 1fr; gap: .6rem; margin: 0; }
+  .dot { width: .6rem; height: .6rem; border-radius: 50%; margin-top: .55rem; background: var(--gold); }
+  .facts li:nth-child(odd) .dot { background: var(--red); }
+  .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; }
+  table { border-collapse: collapse; width: 100%; min-width: 30rem; font-size: .94rem; }
+  th, td { text-align: left; padding: .65rem .85rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-size: .75rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); background: var(--panel); }
+  tr:last-child td { border-bottom: 0; }
+  a { color: var(--link); text-underline-offset: 2px; }
+  a:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; border-radius: 2px; }
+  code { font-size: .92em; }
+  .contact { font-weight: 600; user-select: all; }
+  .steps { counter-reset: s; list-style: none; padding: 0; margin: 0 0 .75rem; display: grid; gap: .55rem; }
+  .steps li { counter-increment: s; display: grid; grid-template-columns: 1.9rem 1fr; gap: .6rem; margin: 0; }
+  .steps li::before { content: counter(s); width: 1.6rem; height: 1.6rem; border-radius: 50%; background: var(--red); color: #fff;
+    font-weight: 700; font-size: .85rem; display: grid; place-items: center; margin-top: .1rem; }
+  .muted { color: var(--muted); }
+</style>
+</head>
+<body>
+
+<div class="stripe" aria-hidden="true"><span></span><span></span></div>
+<main>
+  <header>
+    <div class="eyebrow">More Burgers &middot; Your data</div>
+    <h1>Delete your <em>data</em></h1>
+    <div class="meta">Android game by Ayush Jha &middot; package <code>com.moreburgers.game</code></div>
+  </header>
+
+  <div class="summary">
+    <h2>There's no account to delete</h2>
+    <ul class="facts">
+      <li><span class="dot"></span><span>More Burgers has no accounts, no sign-in and no cloud save. We don't hold any data about you on a server.</span></li>
+      <li><span class="dot"></span><span>Everything the game saves (your restaurant, money, diamonds, levels, skins, boosts and settings) is stored only on your phone.</span></li>
+    </ul>
+  </div>
+
+  <section>
+    <h2>Delete everything the game saved</h2>
+    <p>Either of these permanently removes all More Burgers data from your phone:</p>
+    <ol class="steps">
+      <li><span><strong>Uninstall the game.</strong> Long-press the More Burgers icon and choose Uninstall, or uninstall it from the Google Play Store app.</span></li>
+      <li><span><strong>Or keep the game and start over.</strong> Open your phone's Settings &rsaquo; Apps &rsaquo; More Burgers &rsaquo; Storage, then tap Clear storage (called Clear data on some phones).</span></li>
+    </ol>
+    <p class="muted">This can't be undone: your progress is gone for good. Things you bought with real money that stay yours for good (skins, the Burger Crown and the Scooter) come back when you reinstall and open the game with the same Google account. Diamonds and Cat Coins you spent or still had are not restored.</p>
+  </section>
+
+  <section>
+    <h2>Purchases and ads</h2>
+    <p>Purchases are handled by Google Play and stay in your Google Play order history, which is managed by Google. Ads are served by Google AdMob, which is set up for children and doesn't use your advertising ID. See the <a href="/moreburgers/">privacy policy</a> for details.</p>
+  </section>
+
+  <section>
+    <h2>Questions</h2>
+    <p>Email <span class="contact">contact@jhaayush.com</span> and we'll help.</p>
+  </section>
+
+  <p class="meta"><a href="/">TEKTONIC</a> &middot; <a href="/moreburgers/">Privacy policy</a></p>
+</main>
+
+</body>
+</html>
