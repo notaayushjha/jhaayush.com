@@ -169,30 +169,18 @@ h2{font-family:var(--display);font-weight:800;font-size:clamp(2rem,5vw,3.6rem);l
   .pc .strip img:nth-child(2){transform:none}
 }
 
-/* ---------- studio: a statement on one side, the hold on the other */
+/* ---------- studio: a statement on one side, three cards stepping down like ridges on the other */
 .studio .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,6vw,5rem);align-items:center}
 .statement h2{font-size:clamp(2.2rem,5.6vw,4.4rem)}
 .statement h2 em{font-style:normal;color:var(--hot)}
-.quake{display:grid;gap:1.4rem}
 .ridges{display:grid;gap:.8rem}
-.ridge{--r:0;display:grid;grid-template-columns:2.6rem 1fr;gap:.9rem;align-items:baseline;padding:1.1rem 1.2rem;border-radius:14px;
-  background:var(--bg2);border:1px solid var(--line);
-  opacity:calc(.38 + var(--r)*.62);transform:translate(calc((1 - var(--r))*-18px),calc((1 - var(--r))*10px))}
+.ridge{display:grid;grid-template-columns:2.6rem 1fr;gap:.9rem;align-items:baseline;padding:1.1rem 1.2rem;border-radius:14px;
+  background:var(--bg2);border:1px solid var(--line)}
 .ridge:nth-child(2){margin-left:clamp(0px,3vw,2rem)}.ridge:nth-child(3){margin-left:clamp(0px,6vw,4rem)}
 @media (max-width:860px){.studio .wrap{grid-template-columns:1fr}}
 .ridge .n{font-family:var(--mono);font-size:.8rem;color:var(--hot)}
 .ridge h3{margin:0 0 .2rem;font-family:var(--display);font-size:1.2rem;line-height:1.2}
 .ridge p{margin:0;color:var(--muted);font-size:.98rem}
-.hold{position:relative;display:flex;align-items:center;gap:1rem;width:100%;padding:.9rem 1.1rem;border-radius:14px;cursor:pointer;
-  background:transparent;border:1px solid var(--edge);color:var(--fg);font:600 1rem var(--body);text-align:left;
-  -webkit-user-select:none;user-select:none;touch-action:none;transition:border-color .3s var(--out)}
-.hold:hover{border-color:var(--accent)}
-.hold .bar{position:relative;flex:1;height:6px;border-radius:6px;background:var(--line);overflow:hidden}
-.hold .bar i{position:absolute;inset:0;background:linear-gradient(90deg,var(--accent),var(--hot));transform-origin:left;transform:scaleX(var(--p,0))}
-.hold .glow{position:absolute;inset:-1px;border-radius:14px;box-shadow:0 0 28px 2px rgba(255,122,46,.5);opacity:0;transition:opacity .6s var(--out);pointer-events:none}
-.quake.done .hold .glow{opacity:1}
-.quake.done .hold{cursor:default}
-.note{min-height:1.6em;margin:0;color:var(--dim);font-family:var(--mono);font-size:.8rem;letter-spacing:.06em}
 
 /* ---------- contact: one big action, then each game's papers */
 .contact .wrap{display:grid;justify-items:center;text-align:center;gap:1.2rem}
@@ -233,7 +221,6 @@ footer a:hover{color:var(--fg)}
   *,*::before,*::after{animation:none!important;transition:none!important;transition-delay:0s!important;scroll-behavior:auto!important}
   .rv .part{opacity:1;transform:none}
   .cut img{transform:none}
-  .ridge{--r:1}
   .phones .phone:first-child{transform:translateY(-8%) rotate(-2.5deg)}
   .phones .phone:last-child{transform:rotate(2deg)}
 }
@@ -368,14 +355,10 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
         <h2 class="part">Small games, <em>made to move.</em></h2>
         <p class="lede part">TEKTONIC is an independent studio. Every game is designed, built and tested in house, one at a time, with care for how it feels in your hand.</p>
       </div>
-      <div class="quake rv" id="quake">
-        <div class="ridges part">
-          <div class="ridge"><span class="n">01</span><div><h3>Quick to learn</h3><p>Every game starts with one simple action you can pick up in seconds.</p></div></div>
-          <div class="ridge"><span class="n">02</span><div><h3>Bright and clear</h3><p>Bold colours and big shapes, so you always know what is going on, even on a small screen.</p></div></div>
-          <div class="ridge"><span class="n">03</span><div><h3>Always getting better</h3><p>We keep playing our own games and keep fixing what feels slow, unfair or confusing.</p></div></div>
-        </div>
-        <button class="hold part" id="hold" type="button" aria-describedby="hold-note"><span id="hold-label">Hold to push the plates together</span><span class="bar" aria-hidden="true"><i></i></span><span class="glow" aria-hidden="true"></span></button>
-        <p class="note part" id="hold-note" aria-live="polite">Press and hold. When plates push, ridges rise. Let go early and they settle back.</p>
+      <div class="ridges rv">
+        <div class="ridge part"><span class="n">01</span><div><h3>Quick to learn</h3><p>Every game starts with one simple action you can pick up in seconds.</p></div></div>
+        <div class="ridge part"><span class="n">02</span><div><h3>Bright and clear</h3><p>Bold colours and big shapes, so you always know what is going on, even on a small screen.</p></div></div>
+        <div class="ridge part"><span class="n">03</span><div><h3>Always getting better</h3><p>We keep playing our own games and keep fixing what feels slow, unfair or confusing.</p></div></div>
       </div>
     </div>
   </section>
@@ -408,7 +391,6 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
   const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
   const ss = (p, e0, e1) => { const t = clamp((p - e0) / (e1 - e0), 0, 1); return t * t * (3 - 2 * t); };
   const rng = seed => { let s = seed >>> 0; return () => (s = (s * 1664525 + 1013904223) >>> 0) / 4294967296; };
-  const RM = matchMedia('(prefers-reduced-motion: reduce)');
 
   /* ---- split once, with a seeded generator so it looks the same every load */
   const r = rng(7);
@@ -509,45 +491,6 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
   $$('.contact').forEach(el => live.observe(el));
   document.addEventListener('visibilitychange', () => document.body.classList.toggle('paused', document.hidden));
 
-  /* ---- the one interactive moment: hold to shift the plates, the three ridges rise in turn */
-  const quakeEl = $('#quake'), hold = $('#hold'), label = $('#hold-label'), note = $('#hold-note');
-  const ridges = $$('.ridge', quakeEl), bar = $('.bar i', hold);
-  let hp = 0, holding = false, done = false, last = 0, hRaf = null;
-  const paint = () => {
-    hold.style.setProperty('--p', hp.toFixed(3)); bar.style.transform = 'scaleX(' + hp.toFixed(3) + ')';
-    ridges.forEach((el, i) => el.style.setProperty('--r', ss(hp, i * .26, i * .26 + .42).toFixed(3)));
-  };
-  const finish = () => {
-    done = true; holding = false; hp = 1; paint();
-    quakeEl.classList.add('done'); label.textContent = "Ridges raised";
-    note.textContent = 'That is how every TEKTONIC game gets made.';
-  };
-  const tick = t => {
-    hRaf = null;
-    const dt = Math.min(.05, (t - last) / 1000); last = t;
-    if (done) return;
-    hp = holding ? Math.min(1, hp + dt / 1.5) : Math.max(0, hp - dt / 1.1);
-    paint();
-    if (hp >= 1) { finish(); return; }
-    if (holding || hp > 0) hRaf = requestAnimationFrame(tick);
-  };
-  const start = e => {
-    if (done) return; if (e) e.preventDefault();
-    if (RM.matches) { finish(); return; }
-    holding = true; if (hRaf === null) { last = performance.now(); hRaf = requestAnimationFrame(tick); }
-  };
-  const stop = () => { holding = false; };
-  hold.addEventListener('pointerdown', e => { hold.setPointerCapture && hold.setPointerCapture(e.pointerId); start(e); });
-  ['pointerup', 'pointercancel', 'lostpointercapture'].forEach(n => hold.addEventListener(n, stop));
-  hold.addEventListener('keydown', e => { if ((e.key === ' ' || e.key === 'Enter') && !e.repeat) start(e); });
-  hold.addEventListener('keyup', e => { if (e.key === ' ' || e.key === 'Enter') stop(); });
-  hold.addEventListener('contextmenu', e => e.preventDefault());
-  paint();
-
-  /* ---- reduced motion, live in both directions */
-  function pinToFinalStates() { if (!done) finish(); }
-  RM.addEventListener('change', e => { if (e.matches) pinToFinalStates(); applyHeroMode(); });
-  if (RM.matches) pinToFinalStates();
 })();
 </script>
 </body>
