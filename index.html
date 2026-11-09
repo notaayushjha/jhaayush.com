@@ -3,147 +3,544 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="TEKTONIC makes mobile games: Police Chase and More Burgers. Privacy policies and account deletion for each game.">
-<title>TEKTONIC</title>
+<title>TEKTONIC Games</title>
+<meta name="description" content="TEKTONIC is an independent mobile game studio. Meet Police Chase and More Burgers, both coming soon to Google Play.">
+<meta name="theme-color" content="#15100e">
+<meta property="og:title" content="TEKTONIC Games">
+<meta property="og:description" content="An independent mobile game studio. Police Chase and More Burgers, coming soon to Google Play.">
+<meta property="og:type" content="website">
+<!-- DEPLOY STEP: absolute URLs for the live site -->
+<meta property="og:url" content="https://jhaayush.com/">
+<meta property="og:image" content="https://jhaayush.com/assets/og-tektonic.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2315100e'/%3E%3Cpath d='M12 16h40v12H39v22H27V28H12z' fill='%23f4f2f5'/%3E%3Cpath d='M24 41 54 22' stroke='%23ff7a2e' stroke-width='2.4'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,800;1,700;1,800&family=Public+Sans:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&family=Public+Sans:wght@400;600&family=Sora:wght@700;800&display=swap">
 <style>
-  /* One column: the studio name on shifted slabs (the plates of "tektonic"), then a card per game with its legal links */
-  :root {
-    --bg: #f4f3f0;
-    --fg: #17161c;
-    --muted: #625f6b;
-    --line: #dedbd4;
-    --panel: #ffffff;
-    --slab1: #17161c;
-    --slab2: #ff5a1f;
-    --slab3: #2a5fe0;
-    --link: #1f4fc4;
-    --display: "Barlow Condensed", "Arial Narrow", Arial, sans-serif;
-    --body: "Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --bg: #0e0d12; --fg: #f0eef5; --muted: #a29fae; --line: #2a2833; --panel: #17161e;
-      --slab1: #f0eef5; --slab2: #ff6a33; --slab3: #5b8cff; --link: #8fb0ff; color-scheme: dark;
-    }
-  }
-  :root[data-theme="dark"] {
-    --bg: #0e0d12; --fg: #f0eef5; --muted: #a29fae; --line: #2a2833; --panel: #17161e;
-    --slab1: #f0eef5; --slab2: #ff6a33; --slab3: #5b8cff; --link: #8fb0ff; color-scheme: dark;
-  }
-  *{box-sizing:border-box}
-  body { margin: 0; background: var(--bg); color: var(--fg);
-    font-family: var(--body); font-size: 16px; line-height: 1.6; }
-  main {
-    max-width: 48rem; margin: 0 auto;
-    padding-block: 3rem 4rem;
-    padding-left: max(16px, env(safe-area-inset-left, 0px));
-    padding-right: max(16px, env(safe-area-inset-right, 0px));
-    display: grid; gap: 2.75rem;
-  }
+/* TEKTONIC: the studio's own world. Warm dark earth, white plates, one orange fault line.
+   Signature: the fault. The T is two plates split on a 31 degree seam; scrolling the hero makes them slip
+   along it, and the same seam cuts every game plate below. */
+:root{
+  --bg:#15100e; --bg2:#1d1613; --bg3:#261c18;
+  --fg:#f4f2f5; --muted:#bcaea7; --dim:#8f817a;
+  --line:#3b2d27; --edge:#6d5a51;
+  --accent:#ff7a2e; --hot:#ffb27a; --ink:#1a0f0a;
+  --display:"Sora","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --body:"Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  --out:cubic-bezier(.22,1,.36,1);
+  --inout:cubic-bezier(.65,0,.35,1);
+  --fault:-31.3deg;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{overflow-x:hidden;overflow-x:clip;scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;overflow-x:hidden;overflow-x:clip;background:var(--bg);color:var(--fg);
+  font-family:var(--body);font-size:17px;line-height:1.6;animation:pageIn .9s var(--out) both}
+@keyframes pageIn{from{opacity:0}to{opacity:1}}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+.sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}
+.skip{position:fixed;left:16px;top:-60px;z-index:50;background:var(--accent);color:var(--ink);padding:.6rem 1rem;border-radius:8px;font-weight:600;text-decoration:none;transition:top .3s var(--out)}
+.skip:focus{top:12px}
 
-  /* ---- the name on three offset plates */
-  .hero { display: grid; gap: 1.1rem; }
-  .plates { position: relative; height: 1.9rem; max-width: 22rem; }
-  .plates span { position: absolute; height: .55rem; border-radius: 2px; }
-  .plates span:nth-child(1) { left: 0; width: 46%; top: 0; background: var(--slab2); }
-  .plates span:nth-child(2) { left: 40%; width: 60%; top: .65rem; background: var(--slab3); }
-  .plates span:nth-child(3) { left: 12%; width: 52%; top: 1.3rem; background: var(--slab1); }
-  h1 {
-    font-family: var(--display); font-weight: 800; font-style: normal;
-    font-size: clamp(3.4rem, 15vw, 6.5rem); line-height: .9; letter-spacing: .02em; margin: 0;
-  }
-  .lede { font-size: 1.15rem; color: var(--muted); margin: 0; max-width: 34rem; }
+/* ---------- the one environment: warm glow drifting, a faint seam, grain */
+.world{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.world .glow{position:absolute;left:50%;top:45%;width:150vmax;height:150vmax;margin:-75vmax 0 0 -75vmax;
+  background:radial-gradient(closest-side,rgba(120,52,26,.55),rgba(70,30,18,.28) 45%,rgba(21,16,14,0) 72%);
+  animation:drift 80s var(--inout) infinite alternate;animation-delay:-23s}
+@keyframes drift{0%{transform:translate(-14vw,-8vh) scale(1)}50%{transform:translate(10vw,6vh) scale(1.08)}100%{transform:translate(-4vw,12vh) scale(.96)}}
+.world .seam{position:absolute;left:-30vw;right:-30vw;top:52%;height:1px;transform:rotate(var(--fault));
+  background:linear-gradient(90deg,transparent,rgba(255,122,46,.08) 30%,rgba(255,122,46,.12) 50%,rgba(255,122,46,.08) 70%,transparent)}
+.world .grain{position:absolute;inset:0;opacity:.07;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
 
-  h2.section {
-    font-family: var(--display); font-style: italic; font-weight: 700;
-    font-size: 1.15rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin: 0 0 .9rem;
-  }
+/* ---------- nav */
+.nav{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  padding:14px max(16px,env(safe-area-inset-right)) 14px max(16px,env(safe-area-inset-left));
+  transition:background-color .5s var(--out),border-color .5s var(--out);border-bottom:1px solid transparent}
+.nav.solid{background:rgba(21,16,14,.86);border-bottom-color:var(--line);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+.brand{display:flex;align-items:center;gap:.6rem;text-decoration:none;font-family:var(--display);font-weight:800;letter-spacing:.14em;font-size:.95rem}
+.brand svg{width:26px;height:26px}
+.nav ul{display:flex;align-items:baseline;gap:1.6rem;list-style:none;margin:0;padding:0}
+.nav ul a{text-decoration:none;color:var(--muted);font-size:.92rem;font-weight:600;transition:color .3s var(--out)}
+.nav ul a:hover{color:var(--fg)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;text-decoration:none;font-weight:600;border-radius:999px;
+  padding:.62rem 1.15rem;font-size:.95rem;transition:transform .35s var(--out),background-color .35s var(--out),box-shadow .35s var(--out)}
+.btn-hot{background:var(--accent);color:var(--ink);box-shadow:0 0 0 rgba(255,122,46,0)}
+.btn-hot:hover{transform:translateY(-2px);box-shadow:0 10px 30px -8px rgba(255,122,46,.6)}
+.nav .btn{padding:.5rem 1rem;font-size:.88rem}
+.nav ul a.btn-hot,.nav ul a.btn-hot:hover{color:var(--ink)}
+@media (max-width:600px){.nav ul .opt{display:none}.nav ul{gap:1rem}}
 
-  /* ---- a card per game */
-  .games { display: grid; gap: 1.1rem; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); }
-  .game {
-    background: var(--panel); border: 1px solid var(--line); border-radius: 12px; overflow: hidden;
-    display: grid; grid-template-rows: auto 1fr;
-  }
-  .band { height: 8px; display: grid; grid-template-columns: 1fr 1fr; }
-  .police .band span:first-child { background: #d8283a; } .police .band span:last-child { background: #2a5fe0; }
-  .burgers .band span:first-child { background: #e2392e; } .burgers .band span:last-child { background: #e8a512; }
-  .game-body { padding: 1.2rem 1.25rem 1.25rem; display: grid; gap: .6rem; align-content: start; }
-  .game h3 {
-    font-family: var(--display); font-style: italic; font-weight: 800;
-    font-size: 2.1rem; line-height: 1; margin: 0;
-  }
-  .police h3 em { font-style: italic; color: #d8283a; }
-  .burgers h3 em { font-style: italic; color: #e2392e; }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) .police h3 em { color: #ff4b5c; }
-    :root:not([data-theme="light"]) .burgers h3 em { color: #ff5a4e; }
-  }
-  .tag { font-size: .75rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
-  .game p { margin: 0; }
-  .links { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .4rem; }
-  .links a {
-    display: inline-block; padding: .45rem .8rem; border-radius: 8px; border: 1px solid var(--line);
-    color: var(--fg); text-decoration: none; font-weight: 600; font-size: .92rem;
-  }
-  .links a:hover { border-color: var(--fg); }
-  .links a:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; }
+/* ---------- hero: the banner, rebuilt in code */
+.hero{position:relative;height:360vh}
+.stage{position:sticky;top:0;height:100vh;height:100svh;display:grid;place-items:center;overflow:hidden;
+  --slip:14;--streak:.6;--glow:.6;--lift:0}
+.stage-in{display:grid;justify-items:center;gap:clamp(1.2rem,3.5vh,2.4rem);width:100%;padding:72px 16px 40px;
+  transform:translateY(calc(var(--lift)*-4vh))}
+.mark{width:clamp(150px,22vw,260px);height:auto;overflow:visible}
+.mark .pl{fill:var(--fg)}
+.mark .a{transform:translate(calc(var(--slip)*-.427px),calc(var(--slip)*.26px))}
+.mark .b{transform:translate(calc(var(--slip)*.427px),calc(var(--slip)*-.26px))}
+.mark .streak{transform-box:view-box;transform-origin:306px 214px;transform:scaleX(var(--streak))}
+.mark .gl{opacity:var(--glow)}
+.bands{display:grid;justify-items:center;text-align:center;width:100%}
+.band{grid-area:1/1;display:grid;justify-items:center;align-content:center;gap:1rem;will-change:opacity}
+h1.word{margin:0;font-family:var(--display);font-weight:800;line-height:1;letter-spacing:.12em;
+  font-size:clamp(2.6rem,9.4vw,7.2rem);padding-left:.12em}
+.games-rule{display:flex;align-items:center;gap:1rem;font-family:var(--mono);font-size:clamp(.78rem,1.3vw,1rem);letter-spacing:.42em;color:var(--muted);padding-left:.42em}
+.games-rule::before,.games-rule::after{content:"";width:2.4rem;height:2px;background:var(--accent)}
+.band p.big{margin:0;font-family:var(--display);font-weight:700;font-size:clamp(1.6rem,4.2vw,3.2rem);line-height:1.12;max-width:20ch;text-wrap:balance}
+.band p.sub{margin:0;color:var(--muted);font-size:clamp(1rem,1.4vw,1.15rem);max-width:44ch}
+.band .row{display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;align-items:baseline}
+.textlink{color:var(--fg);text-decoration:none;font-weight:600;border-bottom:1px solid var(--edge);padding-bottom:2px;transition:border-color .3s var(--out)}
+.textlink:hover{border-color:var(--accent)}
+/* characters of the wordmark slide in along the fault */
+.w{display:inline-block;white-space:nowrap}
+.c{display:inline-block;--kc:clamp(0,(var(--k,0) - var(--th,0))*2.6,1);opacity:var(--kc);
+  transform:translate(calc((1 - var(--kc))*var(--jx,0px)),calc((1 - var(--kc))*var(--jy,0px)))}
+.wd{display:inline-block;--kc:clamp(0,(var(--k,0) - var(--th,0))*2.8,1);opacity:var(--kc);
+  transform:translate(calc((1 - var(--kc))*34px),calc((1 - var(--kc))*-20px))}
+.band .late{--ks:clamp(0,(var(--k,0) - .62)*4,1);opacity:var(--ks);transform:translateY(calc((1 - var(--ks))*12px))}
+.cue{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:.72rem;letter-spacing:.3em;color:var(--dim);
+  display:grid;justify-items:center;gap:.5rem;opacity:calc(1 - var(--lift)*3)}
+.cue i{width:1px;height:34px;background:linear-gradient(var(--accent),transparent);transform-origin:top;animation:cue 2.6s var(--inout) infinite;animation-delay:-.8s}
+@keyframes cue{0%{transform:scaleY(0)}50%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
+@media (max-height:560px){.cue{display:none}}
 
-  .contact-row { border-top: 1px solid var(--line); padding-top: 1.5rem; display: grid; gap: .3rem; }
-  .contact-row p { margin: 0; }
-  .contact { font-weight: 600; user-select: all; }
-  footer { color: var(--muted); font-size: .88rem; }
-  a { color: var(--link); text-underline-offset: 2px; }
+/* ---------- shared section bits */
+section.sec{position:relative;padding:clamp(5rem,12vh,9rem) max(16px,env(safe-area-inset-right)) clamp(5rem,12vh,9rem) max(16px,env(safe-area-inset-left))}
+.wrap{max-width:1180px;margin:0 auto}
+.kicker{font-family:var(--mono);font-size:.78rem;letter-spacing:.24em;text-transform:uppercase;color:var(--hot);margin:0 0 1rem}
+h2{font-family:var(--display);font-weight:800;font-size:clamp(2rem,5vw,3.6rem);line-height:1.04;margin:0;letter-spacing:-.01em;text-wrap:balance}
+.lede{color:var(--muted);font-size:1.12rem;max-width:52ch;margin:1rem 0 0}
+
+/* entrances: children arrive in order, then the delays retire */
+.rv .part{opacity:0;transform:translateY(26px);transition:opacity .9s var(--out),transform .9s var(--out)}
+.rv.in .part{opacity:1;transform:none}
+.rv.in .part:nth-child(2){transition-delay:.1s}.rv.in .part:nth-child(3){transition-delay:.2s}
+.rv.in .part:nth-child(4){transition-delay:.3s}.rv.in .part:nth-child(5){transition-delay:.4s}
+.rv.in.settled .part:nth-child(n){transition-delay:0s}
+
+/* ---------- games: each one a plate, cut on the fault */
+.games-head{display:grid;gap:.2rem;margin-bottom:clamp(2.5rem,6vh,4rem)}
+.plate{position:relative;display:grid;gap:clamp(1.5rem,4vw,3.5rem);align-items:center;margin-bottom:clamp(4rem,10vh,7rem)}
+.plate:last-child{margin-bottom:0}
+.pc{grid-template-columns:1.25fr 1fr}
+.cut{position:relative;border-radius:18px;overflow:hidden;background:var(--bg3);
+  clip-path:polygon(0 0,100% 0,100% 78%,0 100%)}
+.cut img{width:100%;aspect-ratio:16/9;object-fit:cover;transform:scale(1.06);transition:transform 1.4s var(--out)}
+.plate.in .cut img{transform:scale(1)}
+.cut::after{content:"";position:absolute;left:-5%;right:-5%;bottom:11%;height:3px;transform:rotate(-6.5deg);transform-origin:center;
+  background:linear-gradient(90deg,transparent,var(--accent) 35%,var(--hot) 55%,transparent);box-shadow:0 0 18px 2px rgba(255,122,46,.55)}
+.info{display:grid;gap:1rem;align-content:start}
+.info .logo{width:min(300px,70%)}
+.tag{display:flex;flex-wrap:wrap;gap:.5rem;align-items:baseline;font-family:var(--mono);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.tag b{font-weight:500;color:var(--fg);background:var(--bg3);border:1px solid var(--line);padding:.28rem .6rem;border-radius:999px}
+.tagline{font-family:var(--display);font-weight:700;font-size:1.25rem;line-height:1.25;margin:0}
+.info p{margin:0;color:var(--muted)}
+.legal{display:flex;flex-wrap:wrap;gap:1.2rem;align-items:baseline;font-size:.92rem;padding-top:.4rem}
+.legal a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:1px;transition:color .3s var(--out),border-color .3s var(--out)}
+.legal a:hover{color:var(--fg);border-color:var(--accent)}
+.strip{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(.6rem,1.5vw,1rem)}
+.strip img{border-radius:12px;aspect-ratio:16/9;object-fit:cover;border:1px solid var(--line)}
+.pc .strip img:nth-child(2){transform:translateY(-14px)}
+
+.mb{grid-template-columns:1fr 1.15fr}
+.mb .info{order:0}
+.phones-wrap{position:relative}
+.phones{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:clamp(.8rem,2vw,1.4rem);align-items:end;
+  padding:clamp(1rem,3vw,2rem);border-radius:18px;background:linear-gradient(160deg,#3b1c13,#24140f 60%);
+  clip-path:polygon(0 8%,100% 0,100% 100%,0 100%)}
+.phone{border-radius:22px;overflow:hidden;border:3px solid #0e0a09;box-shadow:0 22px 40px -18px rgba(0,0,0,.7);background:#0e0a09}
+.phone img{width:100%;aspect-ratio:9/20;object-fit:cover}
+.phones .phone:first-child{transform:translateY(-8%) rotate(-2.5deg)}
+.phones .phone:last-child{transform:rotate(2deg)}
+.buddy{position:absolute;width:28%;right:-3%;bottom:-7%;filter:drop-shadow(0 12px 18px rgba(0,0,0,.45))}
+.mb .icon{flex:none;width:76px;border-radius:18px;box-shadow:0 10px 26px -10px rgba(0,0,0,.7)}
+.mb .logo{width:min(340px,calc(100% - 92px))}
+.mb .head{display:flex;align-items:center;gap:1rem}
+@media (max-width:860px){
+  .pc,.mb{grid-template-columns:1fr}
+  .mb .phones-wrap{order:2}
+  .strip{grid-template-columns:repeat(3,72%);overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:.6rem;margin-right:-16px;padding-right:16px}
+  .strip img{scroll-snap-align:start}
+  .pc .strip img:nth-child(2){transform:none}
+}
+
+/* ---------- studio: a statement on one side, the hold on the other */
+.studio .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,6vw,5rem);align-items:center}
+.statement h2{font-size:clamp(2.2rem,5.6vw,4.4rem)}
+.statement h2 em{font-style:normal;color:var(--hot)}
+.quake{display:grid;gap:1.4rem}
+.ridges{display:grid;gap:.8rem}
+.ridge{--r:0;display:grid;grid-template-columns:2.6rem 1fr;gap:.9rem;align-items:baseline;padding:1.1rem 1.2rem;border-radius:14px;
+  background:var(--bg2);border:1px solid var(--line);
+  opacity:calc(.38 + var(--r)*.62);transform:translate(calc((1 - var(--r))*-18px),calc((1 - var(--r))*10px))}
+.ridge:nth-child(2){margin-left:clamp(0px,3vw,2rem)}.ridge:nth-child(3){margin-left:clamp(0px,6vw,4rem)}
+@media (max-width:860px){.studio .wrap{grid-template-columns:1fr}}
+.ridge .n{font-family:var(--mono);font-size:.8rem;color:var(--hot)}
+.ridge h3{margin:0 0 .2rem;font-family:var(--display);font-size:1.2rem;line-height:1.2}
+.ridge p{margin:0;color:var(--muted);font-size:.98rem}
+.hold{position:relative;display:flex;align-items:center;gap:1rem;width:100%;padding:.9rem 1.1rem;border-radius:14px;cursor:pointer;
+  background:transparent;border:1px solid var(--edge);color:var(--fg);font:600 1rem var(--body);text-align:left;
+  -webkit-user-select:none;user-select:none;touch-action:none;transition:border-color .3s var(--out)}
+.hold:hover{border-color:var(--accent)}
+.hold .bar{position:relative;flex:1;height:6px;border-radius:6px;background:var(--line);overflow:hidden}
+.hold .bar i{position:absolute;inset:0;background:linear-gradient(90deg,var(--accent),var(--hot));transform-origin:left;transform:scaleX(var(--p,0))}
+.hold .glow{position:absolute;inset:-1px;border-radius:14px;box-shadow:0 0 28px 2px rgba(255,122,46,.5);opacity:0;transition:opacity .6s var(--out);pointer-events:none}
+.quake.done .hold .glow{opacity:1}
+.quake.done .hold{cursor:default}
+.note{min-height:1.6em;margin:0;color:var(--dim);font-family:var(--mono);font-size:.8rem;letter-spacing:.06em}
+
+/* ---------- contact: one big action, then each game's papers */
+.contact .wrap{display:grid;justify-items:center;text-align:center;gap:1.2rem}
+.contact h2{font-size:clamp(2.4rem,7vw,5.2rem)}
+.mail{font-size:clamp(1.05rem,2.6vw,1.35rem);padding:1rem 1.6rem}
+.mail .pulse{position:relative}
+.contact .lede{margin:0 auto}
+.papers{width:100%;max-width:760px;margin-top:clamp(3rem,8vh,5rem);text-align:left;border-top:1px solid var(--line)}
+.paper{display:grid;grid-template-columns:1fr auto auto;gap:1.4rem;align-items:baseline;padding:1.1rem 0;border-bottom:1px solid var(--line)}
+.paper h3{margin:0;font-family:var(--display);font-size:1.15rem}
+.paper a{color:var(--muted);text-decoration:none;font-weight:600;font-size:.95rem;transition:color .3s var(--out)}
+.paper a:hover{color:var(--fg)}
+@media (max-width:560px){.paper{grid-template-columns:auto auto;justify-content:start;gap:.2rem 1.6rem}.paper h3{grid-column:1/-1}}
+@keyframes breathe{0%,100%{opacity:.35}50%{opacity:1}}
+.mail-wrap{position:relative;display:inline-grid}
+.mail-wrap::before{content:"";position:absolute;inset:0;border-radius:999px;box-shadow:0 0 38px 4px rgba(255,122,46,.5);pointer-events:none;
+  animation:breathe 5.5s var(--inout) infinite;animation-delay:-2s;animation-play-state:paused}
+.contact.on .mail-wrap::before{animation-play-state:running}
+
+footer{padding:2.2rem max(16px,env(safe-area-inset-right)) 2.6rem max(16px,env(safe-area-inset-left));border-top:1px solid var(--line);color:var(--dim);font-size:.88rem}
+footer .wrap{display:flex;flex-wrap:wrap;gap:1rem 2rem;justify-content:space-between;align-items:baseline}
+footer a{color:var(--muted);text-decoration:none}
+footer a:hover{color:var(--fg)}
+
+@media (pointer:coarse){.btn,.legal a,.paper a,.nav ul a{min-height:44px;display:inline-flex;align-items:center;justify-content:center}}
+
+/* ---------- the static hero: phones, portrait tablets, short landscape phones, reduced motion */
+@media (max-width:720px),(orientation:portrait) and (max-width:1024px),(orientation:portrait) and (pointer:coarse),(orientation:landscape) and (pointer:coarse) and (max-height:560px),(prefers-reduced-motion:reduce){
+  .hero{height:auto}
+  .stage{position:relative;height:auto;min-height:100svh;--slip:14;--streak:1;--glow:1;--lift:0}
+  .stage-in{padding:96px 16px 64px}
+  .band{grid-area:auto;opacity:1!important;--k:1!important}
+  .bands{gap:2.6rem}
+  .cue{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;transition-delay:0s!important;scroll-behavior:auto!important}
+  .rv .part{opacity:1;transform:none}
+  .cut img{transform:none}
+  .ridge{--r:1}
+  .phones .phone:first-child{transform:translateY(-8%) rotate(-2.5deg)}
+  .phones .phone:last-child{transform:rotate(2deg)}
+}
+body.paused *,body.paused *::before,body.paused *::after{animation-play-state:paused!important}
 </style>
 </head>
 <body>
-<main>
-  <header class="hero">
-    <div class="plates" aria-hidden="true"><span></span><span></span><span></span></div>
-    <h1>TEKTONIC</h1>
-    <p class="lede">An independent mobile game studio by Ayush Jha, making bright, simple games for Android.</p>
-  </header>
+<a class="skip" href="#main">Skip to content</a>
+<div class="world" aria-hidden="true"><div class="glow"></div><div class="seam"></div><div class="grain"></div></div>
 
-  <section>
-    <h2 class="section">Our games</h2>
-    <div class="games">
-      <article class="game police">
-        <div class="band" aria-hidden="true"><span></span><span></span></div>
-        <div class="game-body">
-          <div class="tag">Android &middot; Coming soon</div>
-          <h3>Police <em>Chase</em></h3>
-          <p>Outrun the police, collect coins, and unlock and upgrade your cars.</p>
-          <div class="links">
-            <a href="/policechase/">Privacy policy</a>
-            <a href="/policechase/delete-account/">Delete account</a>
+<nav class="nav" aria-label="Main">
+  <a class="brand" href="#top" aria-label="TEKTONIC, back to top">
+    <svg viewBox="88 100 352 300" aria-hidden="true"><path d="M116 129H400V213H304V373H212V213H116Z" fill="#f4f2f5"/><path d="M190 284 430 138" stroke="#ff7a2e" stroke-width="10"/></svg>
+    TEKTONIC
+  </a>
+  <ul>
+    <li class="opt"><a href="#games">Games</a></li>
+    <li class="opt"><a href="#studio">Studio</a></li>
+    <li><a class="btn btn-hot" href="#contact">Get in touch</a></li>
+  </ul>
+</nav>
+
+<main id="main" tabindex="-1">
+  <section class="hero" id="top" aria-label="TEKTONIC Games">
+    <div class="stage" id="stage">
+      <div class="stage-in">
+        <svg class="mark" viewBox="88 100 352 300" aria-hidden="true">
+          <defs>
+            <clipPath id="up"><polygon points="-600,-600 1100,-600 1100,-268.9 -600,764.7"/></clipPath>
+            <clipPath id="tc"><path d="M116 129H400V213H304V373H212V213H116Z"/></clipPath>
+            <clipPath id="lo"><polygon points="-600,764.7 1100,-268.9 1100,1100 -600,1100"/></clipPath>
+            <linearGradient id="sg" gradientUnits="userSpaceOnUse" x1="-1700" y1="0" x2="2300" y2="0">
+              <stop offset="0" stop-color="#ff7a2e" stop-opacity="0"/>
+              <stop offset=".42" stop-color="#ff7a2e" stop-opacity=".55"/>
+              <stop offset=".5" stop-color="#ffd0a8" stop-opacity="1"/>
+              <stop offset=".58" stop-color="#ff7a2e" stop-opacity=".55"/>
+              <stop offset="1" stop-color="#ff7a2e" stop-opacity="0"/>
+            </linearGradient>
+            <filter id="bl" x="-50%" y="-500%" width="200%" height="1100%"><feGaussianBlur stdDeviation="7"/></filter>
+          </defs>
+          <g transform="rotate(-31.3 306 214)">
+            <rect class="streak gl" x="-1700" y="208" width="4000" height="12" fill="url(#sg)" filter="url(#bl)"/>
+            <rect class="streak" x="-1700" y="212.8" width="4000" height="2.4" fill="url(#sg)"/>
+          </g>
+          <g class="a"><path class="pl" clip-path="url(#up)" d="M116 129H400V213H304V373H212V213H116Z"/></g>
+          <g class="b"><path class="pl" clip-path="url(#lo)" d="M116 129H400V213H304V373H212V213H116Z"/></g>
+          <g clip-path="url(#tc)"><g transform="rotate(-31.3 306 214)">
+            <rect class="gl" x="40" y="205" width="540" height="18" fill="#ff7a2e" filter="url(#bl)"/>
+            <rect x="40" y="211.6" width="540" height="4.8" fill="#ffb27a"/>
+          </g></g>
+        </svg>
+
+        <div class="bands">
+          <div class="band" data-a="0" data-b="0.42">
+            <h1 class="word"><span class="sr">TEKTONIC Games</span><span class="split" aria-hidden="true">TEKTONIC</span></h1>
+            <div class="games-rule late" aria-hidden="true">GAMES</div>
           </div>
+          <div class="band" data-a="0.5" data-b="1">
+            <p class="big"><span class="sr">Small, bright games for your phone.</span><span class="splitw" aria-hidden="true">Small, bright games for your phone.</span></p>
+            <p class="sub late">An independent studio making simple, colourful games for Android. Two are on the way.</p>
+            <div class="row late"><a class="textlink" href="#games">Meet the games</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="cue" aria-hidden="true">SCROLL<i></i></div>
+    </div>
+  </section>
+
+  <section class="sec games" id="games">
+    <div class="wrap">
+      <header class="games-head rv">
+        <p class="kicker part">Our games</p>
+        <h2 class="part">Two games, both on the way to Google&nbsp;Play.</h2>
+      </header>
+
+      <article class="plate pc rv" aria-labelledby="pc-title">
+        <div class="cut part"><img src="assets/pc-feature.jpg" width="1600" height="900" alt="Police Chase: an orange muscle car speeds through a city street with a police car behind it." loading="lazy"></div>
+        <div class="info">
+          <h3 id="pc-title" class="sr">Police Chase</h3>
+          <img class="logo part" src="assets/pc-logo.webp" width="480" height="320" alt="" loading="lazy">
+          <div class="tag part"><b>Android</b><span>Coming soon</span></div>
+          <p class="tagline part">Jump the signal. Outrun the law.</p>
+          <p class="part">Race through the city by day and by night, drop oil and nails to shake off the police, then spend your coins on new cars in the garage.</p>
+          <div class="legal part"><a href="/policechase/">Privacy policy</a><a href="/policechase/delete-account/">Delete account</a></div>
+        </div>
+        <div class="strip part">
+          <img src="assets/pc-night.jpg" width="960" height="483" alt="A night drive under street lights, with the speed and wanted stars on screen." loading="lazy">
+          <img src="assets/pc-redlight.jpg" width="960" height="483" alt="The Police Chase start screen: a red car waits at a city crossing." loading="lazy">
+          <img src="assets/pc-garage.jpg" width="960" height="483" alt="The garage, where you pick and upgrade your car." loading="lazy">
         </div>
       </article>
 
-      <article class="game burgers">
-        <div class="band" aria-hidden="true"><span></span><span></span></div>
-        <div class="game-body">
-          <div class="tag">Android &middot; Coming soon</div>
-          <h3>More <em>Burgers</em></h3>
-          <p>Build your own burger restaurant: cook, serve customers and grow from one grill to a busy diner.</p>
-          <div class="links">
-            <a href="/moreburgers/">Privacy policy</a>
-            <a href="/moreburgers/delete-account/">Delete data</a>
-          </div>
+      <article class="plate mb rv" aria-labelledby="mb-title">
+        <div class="info">
+          <h3 id="mb-title" class="sr">More Burgers</h3>
+          <div class="head part"><img class="icon" src="assets/mb-icon.webp" width="256" height="256" alt="" loading="lazy"><img class="logo" src="assets/mb-logo.webp" width="720" height="300" alt="" loading="lazy"></div>
+          <div class="tag part"><b>Android</b><span>Coming soon</span></div>
+          <p class="tagline part">Grill, serve, grow. Then grill some more.</p>
+          <p class="part">Run your own burger place: cook on the line, carry orders to hungry customers, hire staff and grow one grill into a busy diner with a drive-thru.</p>
+          <div class="legal part"><a href="/moreburgers/">Privacy policy</a><a href="/moreburgers/delete-account/">Delete data</a></div>
+        </div>
+        <div class="phones-wrap part">
+        <div class="phones">
+          <div class="phone"><img src="assets/mb-shot-1.jpg" width="540" height="1200" alt="More Burgers: the restaurant from above, with tables inside and the MORE BURGERS sign over the door." loading="lazy"></div>
+          <div class="phone"><img src="assets/mb-shot-2.jpg" width="540" height="1200" alt="More Burgers: customers lining up inside the diner, by the burger belt." loading="lazy"></div>
+        </div>
+          <img class="buddy" src="assets/mb-buddy.webp" width="512" height="492" alt="" loading="lazy">
         </div>
       </article>
     </div>
   </section>
 
-  <section class="contact-row">
-    <h2 class="section">Contact</h2>
-    <p>Questions about our games or your data: <span class="contact">contact@jhaayush.com</span></p>
+  <section class="sec studio" id="studio">
+    <div class="wrap">
+      <div class="statement rv">
+        <p class="kicker part">The studio</p>
+        <h2 class="part">Small games, <em>made to move.</em></h2>
+        <p class="lede part">TEKTONIC is an independent studio. Every game is designed, built and tested in house, one at a time, with care for how it feels in your hand.</p>
+      </div>
+      <div class="quake rv" id="quake">
+        <div class="ridges part">
+          <div class="ridge"><span class="n">01</span><div><h3>Quick to learn</h3><p>Every game starts with one simple action you can pick up in seconds.</p></div></div>
+          <div class="ridge"><span class="n">02</span><div><h3>Bright and clear</h3><p>Bold colours and big shapes, so you always know what is going on, even on a small screen.</p></div></div>
+          <div class="ridge"><span class="n">03</span><div><h3>Always getting better</h3><p>We keep playing our own games and keep fixing what feels slow, unfair or confusing.</p></div></div>
+        </div>
+        <button class="hold part" id="hold" type="button" aria-describedby="hold-note"><span id="hold-label">Hold to push the plates together</span><span class="bar" aria-hidden="true"><i></i></span><span class="glow" aria-hidden="true"></span></button>
+        <p class="note part" id="hold-note" aria-live="polite">Press and hold. When plates push, ridges rise. Let go early and they settle back.</p>
+      </div>
+    </div>
   </section>
 
-  <footer>&copy; 2026 TEKTONIC</footer>
+  <section class="sec contact" id="contact">
+    <div class="wrap rv">
+      <p class="kicker part">Contact</p>
+      <h2 class="part">Say hello.</h2>
+      <p class="lede part">Questions about a game, your data, a bug you found or working together. We read every email.</p>
+      <div class="part"><span class="mail-wrap"><a class="btn btn-hot mail" href="mailto:contact@jhaayush.com">contact@jhaayush.com</a></span></div>
+      <div class="papers part" aria-label="Privacy and data for each game">
+        <div class="paper"><h3>Police Chase</h3><a href="/policechase/">Privacy policy</a><a href="/policechase/delete-account/">Delete account</a></div>
+        <div class="paper"><h3>More Burgers</h3><a href="/moreburgers/">Privacy policy</a><a href="/moreburgers/delete-account/">Delete data</a></div>
+      </div>
+    </div>
+  </section>
 </main>
+
+<footer>
+  <div class="wrap">
+    <span>&copy; 2026 TEKTONIC Games. Made by Ayush Jha.</span>
+    <span><a href="#games">Games</a> &middot; <a href="#studio">Studio</a> &middot; <a href="mailto:contact@jhaayush.com">Email</a></span>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
+  const ss = (p, e0, e1) => { const t = clamp((p - e0) / (e1 - e0), 0, 1); return t * t * (3 - 2 * t); };
+  const rng = seed => { let s = seed >>> 0; return () => (s = (s * 1664525 + 1013904223) >>> 0) / 4294967296; };
+  const RM = matchMedia('(prefers-reduced-motion: reduce)');
+
+  /* ---- split once, with a seeded generator so it looks the same every load */
+  const r = rng(7);
+  $$('.split').forEach(el => {
+    const t = el.textContent; el.textContent = '';
+    [...t].forEach((ch, i) => {
+      const c = document.createElement('span'); c.className = 'c'; c.textContent = ch;
+      const d = (r() - .5) * 2, side = i < t.length / 2 ? -1 : 1;
+      c.style.setProperty('--th', (i / t.length * .35 + r() * .08).toFixed(3));
+      c.style.setProperty('--jx', (side * (40 + r() * 50)).toFixed(1) + 'px');   // along the fault: left half from lower left,
+      c.style.setProperty('--jy', (-side * (24 + r() * 30) + d * 6).toFixed(1) + 'px'); // right half from upper right
+      el.appendChild(c);
+    });
+  });
+  $$('.splitw').forEach(el => {
+    const words = el.textContent.split(' '); el.textContent = '';
+    words.forEach((w, i) => {
+      const s = document.createElement('span'); s.className = 'wd'; s.textContent = w;
+      s.style.setProperty('--th', (i / words.length * .4 + r() * .04).toFixed(3));
+      el.appendChild(s); if (i < words.length - 1) el.appendChild(document.createTextNode(' '));
+    });
+  });
+
+  /* ---- nav turns solid once you leave the top */
+  const nav = $('.nav');
+  const navCheck = () => nav.classList.toggle('solid', scrollY > 40);
+  addEventListener('scroll', navCheck, { passive: true }); navCheck();
+
+  /* ---- the hero: plates slip along the fault as you scroll */
+  const hero = $('.hero'), stage = $('#stage');
+  const bands = $$('.band').map(el => ({ el, a: +el.dataset.a, b: +el.dataset.b, op: -1, k: -1 }));
+  const vars = { slip: -1, streak: -1, glow: -1, lift: -1 };
+  const setVar = (name, v, eps) => { if (Math.abs(vars[name] - v) > eps) { vars[name] = v; stage.style.setProperty('--' + name, v.toFixed(4)); } };
+  let loadK = 0, loadStart = 0, rafId = null, scrubOn = false;
+
+  const heroProgress = () => {
+    const range = hero.offsetHeight - innerHeight;
+    return range > 0 ? clamp(-hero.getBoundingClientRect().top / range, 0, 1) : 0;
+  };
+  function drive() {
+    rafId = null;
+    const p = heroProgress();
+    if (loadK < 1) { loadK = clamp((performance.now() - loadStart) / 1300, 0, 1); }
+    const lk = 1 - Math.pow(1 - loadK, 3);
+    const quake = ss(p, .22, .66);
+    setVar('slip', 70 - 56 * lk + 92 * quake, .05);
+    setVar('streak', .08 + .5 * lk + .42 * ss(p, .1, .55), .002);
+    setVar('glow', .35 + .3 * lk + .35 * ss(p, .2, .6), .004);
+    setVar('lift', ss(p, .45, .6), .004);
+    const F = .07;
+    bands.forEach((b, i) => {
+      const first = i === 0, last = i === bands.length - 1;
+      const op = (first ? 1 : ss(p, b.a, b.a + F)) * (last ? 1 : 1 - ss(p, b.b - F, b.b));
+      let k = clamp((p - b.a) / Math.min(.1, (b.b - b.a) * .35), 0, 1);
+      if (first) k = Math.max(k, lk);
+      if (Math.abs(op - b.op) > .004) { b.op = op; b.el.style.opacity = op.toFixed(3); b.el.style.visibility = op < .01 ? 'hidden' : 'visible'; }
+      if (Math.abs(k - b.k) > .008) { b.k = k; b.el.style.setProperty('--k', k.toFixed(3)); }
+    });
+    if (loadK < 1) rafId = requestAnimationFrame(drive);
+  }
+  const onScroll = () => { if (rafId === null) rafId = requestAnimationFrame(drive); };
+
+  function pinHero() {
+    ['slip', 'streak', 'glow', 'lift'].forEach(n => { vars[n] = -1; stage.style.removeProperty('--' + n); });
+    bands.forEach(b => { b.op = b.k = -1; b.el.style.opacity = ''; b.el.style.visibility = ''; b.el.style.setProperty('--k', 1); });
+  }
+  const GATES = [
+    '(max-width: 720px)',
+    '(orientation: portrait) and (max-width: 1024px)',
+    '(orientation: portrait) and (pointer: coarse)',
+    '(orientation: landscape) and (pointer: coarse) and (max-height: 560px)',
+    '(prefers-reduced-motion: reduce)'
+  ];
+  function enableScrub() {
+    if (scrubOn) return; scrubOn = true;
+    loadStart = performance.now(); if (loadK >= 1) loadK = 1;
+    bands.forEach(b => { b.op = -1; b.k = -1; });
+    Object.keys(vars).forEach(n => vars[n] = -1);
+    addEventListener('scroll', onScroll, { passive: true });
+    addEventListener('resize', onScroll);
+    onScroll();
+  }
+  function disableScrub() {
+    if (!scrubOn) { pinHero(); return; } scrubOn = false;
+    removeEventListener('scroll', onScroll); removeEventListener('resize', onScroll);
+    if (rafId !== null) { cancelAnimationFrame(rafId); rafId = null; }
+    pinHero();
+  }
+  function applyHeroMode() { GATES.some(q => matchMedia(q).matches) ? disableScrub() : enableScrub(); }
+  const MQLS = GATES.map(q => matchMedia(q));
+  MQLS.forEach(m => m.addEventListener('change', applyHeroMode));
+  applyHeroMode();
+
+  /* ---- entrances, then the stagger delays retire */
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (!e.isIntersecting) return;
+    const el = e.target; el.classList.add('in'); io.unobserve(el);
+    setTimeout(() => el.classList.add('settled'), 1500);
+  }), { threshold: .18, rootMargin: '0px 0px -6% 0px' });
+  $$('.rv').forEach(el => io.observe(el));
+
+  /* ---- living elements run only while on screen */
+  const live = new IntersectionObserver(es => es.forEach(e => e.target.classList.toggle('on', e.isIntersecting)));
+  $$('.contact').forEach(el => live.observe(el));
+  document.addEventListener('visibilitychange', () => document.body.classList.toggle('paused', document.hidden));
+
+  /* ---- the one interactive moment: hold to shift the plates, the three ridges rise in turn */
+  const quakeEl = $('#quake'), hold = $('#hold'), label = $('#hold-label'), note = $('#hold-note');
+  const ridges = $$('.ridge', quakeEl), bar = $('.bar i', hold);
+  let hp = 0, holding = false, done = false, last = 0, hRaf = null;
+  const paint = () => {
+    hold.style.setProperty('--p', hp.toFixed(3)); bar.style.transform = 'scaleX(' + hp.toFixed(3) + ')';
+    ridges.forEach((el, i) => el.style.setProperty('--r', ss(hp, i * .26, i * .26 + .42).toFixed(3)));
+  };
+  const finish = () => {
+    done = true; holding = false; hp = 1; paint();
+    quakeEl.classList.add('done'); label.textContent = "Ridges raised";
+    note.textContent = 'That is how every TEKTONIC game gets made.';
+  };
+  const tick = t => {
+    hRaf = null;
+    const dt = Math.min(.05, (t - last) / 1000); last = t;
+    if (done) return;
+    hp = holding ? Math.min(1, hp + dt / 1.5) : Math.max(0, hp - dt / 1.1);
+    paint();
+    if (hp >= 1) { finish(); return; }
+    if (holding || hp > 0) hRaf = requestAnimationFrame(tick);
+  };
+  const start = e => {
+    if (done) return; if (e) e.preventDefault();
+    if (RM.matches) { finish(); return; }
+    holding = true; if (hRaf === null) { last = performance.now(); hRaf = requestAnimationFrame(tick); }
+  };
+  const stop = () => { holding = false; };
+  hold.addEventListener('pointerdown', e => { hold.setPointerCapture && hold.setPointerCapture(e.pointerId); start(e); });
+  ['pointerup', 'pointercancel', 'lostpointercapture'].forEach(n => hold.addEventListener(n, stop));
+  hold.addEventListener('keydown', e => { if ((e.key === ' ' || e.key === 'Enter') && !e.repeat) start(e); });
+  hold.addEventListener('keyup', e => { if (e.key === ' ' || e.key === 'Enter') stop(); });
+  hold.addEventListener('contextmenu', e => e.preventDefault());
+  paint();
+
+  /* ---- reduced motion, live in both directions */
+  function pinToFinalStates() { if (!done) finish(); }
+  RM.addEventListener('change', e => { if (e.matches) pinToFinalStates(); applyHeroMode(); });
+  if (RM.matches) pinToFinalStates();
+})();
+</script>
 </body>
 </html>
