@@ -52,8 +52,6 @@ a{color:inherit}
   background:radial-gradient(closest-side,rgba(120,52,26,.55),rgba(70,30,18,.28) 45%,rgba(21,16,14,0) 72%);
   animation:drift 80s var(--inout) infinite alternate;animation-delay:-23s}
 @keyframes drift{0%{transform:translate(-14vw,-8vh) scale(1)}50%{transform:translate(10vw,6vh) scale(1.08)}100%{transform:translate(-4vw,12vh) scale(.96)}}
-.world .seam{position:absolute;left:-30vw;right:-30vw;top:52%;height:1px;transform:rotate(var(--fault));
-  background:linear-gradient(90deg,transparent,rgba(255,122,46,.08) 30%,rgba(255,122,46,.12) 50%,rgba(255,122,46,.08) 70%,transparent)}
 .world .grain{position:absolute;inset:0;opacity:.07;mix-blend-mode:overlay;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
 
@@ -221,8 +219,9 @@ footer a:hover{color:var(--fg)}
 
 @media (pointer:coarse){.btn,.legal a,.paper a,.nav ul a{min-height:44px;display:inline-flex;align-items:center;justify-content:center}}
 
-/* ---------- the static hero: phones, portrait tablets, short landscape phones, reduced motion */
-@media (max-width:720px),(orientation:portrait) and (max-width:1024px),(orientation:portrait) and (pointer:coarse),(orientation:landscape) and (pointer:coarse) and (max-height:560px),(prefers-reduced-motion:reduce){
+/* ---------- the still hero: only for people who asked for reduced motion */
+@media (max-width:720px){.hero{height:300vh}.stage-in{padding:72px 16px 56px}.mark{width:min(50vw,210px)}}
+@media (prefers-reduced-motion:reduce){
   .hero{height:auto}
   .stage{position:relative;height:auto;min-height:100svh;--slip:14;--streak:1;--glow:1;--lift:0}
   .stage-in{padding:96px 16px 64px}
@@ -243,7 +242,7 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<div class="world" aria-hidden="true"><div class="glow"></div><div class="seam"></div><div class="grain"></div></div>
+<div class="world" aria-hidden="true"><div class="glow"></div><div class="grain"></div></div>
 
 <nav class="nav" aria-label="Main">
   <a class="brand" href="#top" aria-label="TEKTONIC, back to top">
@@ -273,18 +272,33 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
               <stop offset=".58" stop-color="#ff7a2e" stop-opacity=".55"/>
               <stop offset="1" stop-color="#ff7a2e" stop-opacity="0"/>
             </linearGradient>
+            <linearGradient id="ea" gradientUnits="userSpaceOnUse" x1="0" y1="201" x2="0" y2="214">
+              <stop offset="0" stop-color="#ff7a2e" stop-opacity="0"/><stop offset=".55" stop-color="#ff7a2e" stop-opacity=".3"/><stop offset="1" stop-color="#ff9a55" stop-opacity="1"/>
+            </linearGradient>
+            <linearGradient id="eb" gradientUnits="userSpaceOnUse" x1="0" y1="227" x2="0" y2="214">
+              <stop offset="0" stop-color="#ff7a2e" stop-opacity="0"/><stop offset=".55" stop-color="#ff7a2e" stop-opacity=".3"/><stop offset="1" stop-color="#ff9a55" stop-opacity="1"/>
+            </linearGradient>
             <filter id="bl" x="-50%" y="-500%" width="200%" height="1100%"><feGaussianBlur stdDeviation="7"/></filter>
           </defs>
           <g transform="rotate(-31.3 306 214)">
             <rect class="streak gl" x="-1700" y="208" width="4000" height="12" fill="url(#sg)" filter="url(#bl)"/>
             <rect class="streak" x="-1700" y="212.8" width="4000" height="2.4" fill="url(#sg)"/>
           </g>
-          <g class="a"><path class="pl" clip-path="url(#up)" d="M116 129H400V213H304V373H212V213H116Z"/></g>
-          <g class="b"><path class="pl" clip-path="url(#lo)" d="M116 129H400V213H304V373H212V213H116Z"/></g>
-          <g clip-path="url(#tc)"><g transform="rotate(-31.3 306 214)">
-            <rect class="gl" x="40" y="205" width="540" height="18" fill="#ff7a2e" filter="url(#bl)"/>
-            <rect x="40" y="211.6" width="540" height="4.8" fill="#ffb27a"/>
-          </g></g>
+          <!-- each half carries its own lit cut edge, so the glow moves with the plate -->
+          <g class="a"><g clip-path="url(#up)"><g clip-path="url(#tc)">
+            <path class="pl" d="M116 129H400V213H304V373H212V213H116Z"/>
+            <g transform="rotate(-31.3 306 214)">
+              <rect class="gl" x="-300" y="201" width="1200" height="13" fill="url(#ea)"/>
+              <rect x="-300" y="211.2" width="1200" height="2.8" fill="#ffd9b8"/>
+            </g>
+          </g></g></g>
+          <g class="b"><g clip-path="url(#lo)"><g clip-path="url(#tc)">
+            <path class="pl" d="M116 129H400V213H304V373H212V213H116Z"/>
+            <g transform="rotate(-31.3 306 214)">
+              <rect class="gl" x="-300" y="214" width="1200" height="13" fill="url(#eb)"/>
+              <rect x="-300" y="214" width="1200" height="2.8" fill="#ffd9b8"/>
+            </g>
+          </g></g></g>
         </svg>
 
         <div class="bands">
@@ -461,13 +475,7 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
     ['slip', 'streak', 'glow', 'lift'].forEach(n => { vars[n] = -1; stage.style.removeProperty('--' + n); });
     bands.forEach(b => { b.op = b.k = -1; b.el.style.opacity = ''; b.el.style.visibility = ''; b.el.style.setProperty('--k', 1); });
   }
-  const GATES = [
-    '(max-width: 720px)',
-    '(orientation: portrait) and (max-width: 1024px)',
-    '(orientation: portrait) and (pointer: coarse)',
-    '(orientation: landscape) and (pointer: coarse) and (max-height: 560px)',
-    '(prefers-reduced-motion: reduce)'
-  ];
+  const GATES = ['(prefers-reduced-motion: reduce)'];   // everyone else, phones included, gets the slip
   function enableScrub() {
     if (scrubOn) return; scrubOn = true;
     loadStart = performance.now(); if (loadK >= 1) loadK = 1;
