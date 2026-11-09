@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="TEKTONIC makes mobile games: Police Chase and More Burgers. Privacy policies and account deletion for each game.">
+<title>TEKTONIC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,800;1,700;1,800&family=Public+Sans:wght@400;600;700&display=swap">
+<style>
+  /* One column: the studio name on shifted slabs (the plates of "tektonic"), then a card per game with its legal links */
+  :root {
+    --bg: #f4f3f0;
+    --fg: #17161c;
+    --muted: #625f6b;
+    --line: #dedbd4;
+    --panel: #ffffff;
+    --slab1: #17161c;
+    --slab2: #ff5a1f;
+    --slab3: #2a5fe0;
+    --link: #1f4fc4;
+    --display: "Barlow Condensed", "Arial Narrow", Arial, sans-serif;
+    --body: "Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0e0d12; --fg: #f0eef5; --muted: #a29fae; --line: #2a2833; --panel: #17161e;
+      --slab1: #f0eef5; --slab2: #ff6a33; --slab3: #5b8cff; --link: #8fb0ff; color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0e0d12; --fg: #f0eef5; --muted: #a29fae; --line: #2a2833; --panel: #17161e;
+    --slab1: #f0eef5; --slab2: #ff6a33; --slab3: #5b8cff; --link: #8fb0ff; color-scheme: dark;
+  }
+  *{box-sizing:border-box}
+  body { margin: 0; background: var(--bg); color: var(--fg);
+    font-family: var(--body); font-size: 16px; line-height: 1.6; }
+  main {
+    max-width: 48rem; margin: 0 auto;
+    padding-block: 3rem 4rem;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    display: grid; gap: 2.75rem;
+  }
+
+  /* ---- the name on three offset plates */
+  .hero { display: grid; gap: 1.1rem; }
+  .plates { position: relative; height: 1.9rem; max-width: 22rem; }
+  .plates span { position: absolute; height: .55rem; border-radius: 2px; }
+  .plates span:nth-child(1) { left: 0; width: 46%; top: 0; background: var(--slab2); }
+  .plates span:nth-child(2) { left: 40%; width: 60%; top: .65rem; background: var(--slab3); }
+  .plates span:nth-child(3) { left: 12%; width: 52%; top: 1.3rem; background: var(--slab1); }
+  h1 {
+    font-family: var(--display); font-weight: 800; font-style: normal;
+    font-size: clamp(3.4rem, 15vw, 6.5rem); line-height: .9; letter-spacing: .02em; margin: 0;
+  }
+  .lede { font-size: 1.15rem; color: var(--muted); margin: 0; max-width: 34rem; }
+
+  h2.section {
+    font-family: var(--display); font-style: italic; font-weight: 700;
+    font-size: 1.15rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin: 0 0 .9rem;
+  }
+
+  /* ---- a card per game */
+  .games { display: grid; gap: 1.1rem; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); }
+  .game {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 12px; overflow: hidden;
+    display: grid; grid-template-rows: auto 1fr;
+  }
+  .band { height: 8px; display: grid; grid-template-columns: 1fr 1fr; }
+  .police .band span:first-child { background: #d8283a; } .police .band span:last-child { background: #2a5fe0; }
+  .burgers .band span:first-child { background: #e2392e; } .burgers .band span:last-child { background: #e8a512; }
+  .game-body { padding: 1.2rem 1.25rem 1.25rem; display: grid; gap: .6rem; align-content: start; }
+  .game h3 {
+    font-family: var(--display); font-style: italic; font-weight: 800;
+    font-size: 2.1rem; line-height: 1; margin: 0;
+  }
+  .police h3 em { font-style: italic; color: #d8283a; }
+  .burgers h3 em { font-style: italic; color: #e2392e; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .police h3 em { color: #ff4b5c; }
+    :root:not([data-theme="light"]) .burgers h3 em { color: #ff5a4e; }
+  }
+  .tag { font-size: .75rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+  .game p { margin: 0; }
+  .links { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .4rem; }
+  .links a {
+    display: inline-block; padding: .45rem .8rem; border-radius: 8px; border: 1px solid var(--line);
+    color: var(--fg); text-decoration: none; font-weight: 600; font-size: .92rem;
+  }
+  .links a:hover { border-color: var(--fg); }
+  .links a:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; }
+
+  .contact-row { border-top: 1px solid var(--line); padding-top: 1.5rem; display: grid; gap: .3rem; }
+  .contact-row p { margin: 0; }
+  .contact { font-weight: 600; user-select: all; }
+  footer { color: var(--muted); font-size: .88rem; }
+  a { color: var(--link); text-underline-offset: 2px; }
+</style>
+</head>
+<body>
+<main>
+  <header class="hero">
+    <div class="plates" aria-hidden="true"><span></span><span></span><span></span></div>
+    <h1>TEKTONIC</h1>
+    <p class="lede">An independent mobile game studio by Ayush Jha, making bright, simple games for Android.</p>
+  </header>
+
+  <section>
+    <h2 class="section">Our games</h2>
+    <div class="games">
+      <article class="game police">
+        <div class="band" aria-hidden="true"><span></span><span></span></div>
+        <div class="game-body">
+          <div class="tag">Android &middot; Coming soon</div>
+          <h3>Police <em>Chase</em></h3>
+          <p>Outrun the police, collect coins, and unlock and upgrade your cars.</p>
+          <div class="links">
+            <a href="/policechase/">Privacy policy</a>
+            <a href="/policechase/delete-account/">Delete account</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="game burgers">
+        <div class="band" aria-hidden="true"><span></span><span></span></div>
+        <div class="game-body">
+          <div class="tag">Android &middot; Coming soon</div>
+          <h3>More <em>Burgers</em></h3>
+          <p>Build your own burger restaurant: cook, serve customers and grow from one grill to a busy diner.</p>
+          <div class="links">
+            <a href="/moreburgers/">Privacy policy</a>
+            <a href="/moreburgers/delete-account/">Delete data</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="contact-row">
+    <h2 class="section">Contact</h2>
+    <p>Questions about our games or your data: <span class="contact">contact@jhaayush.com</span></p>
+  </section>
+
+  <footer>&copy; 2026 TEKTONIC</footer>
+</main>
+</body>
+</html>
