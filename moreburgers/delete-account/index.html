@@ -1,132 +1,85 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="How to delete your More Burgers data.">
 <title>Delete your More Burgers data</title>
+<meta name="description" content="How to delete your More Burgers data.">
+<meta name="theme-color" content="#15100e">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2315100e'/%3E%3Cpath d='M12 16h40v12H39v22H27V28H12z' fill='%23f4f2f5'/%3E%3Cpath d='M24 41 54 22' stroke='%23ff7a2e' stroke-width='2.4'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@1,700;1,800&family=Public+Sans:wght@400;600;700&display=swap">
-<style>
-  /* Same layout as the Police Chase policy: one readable column, a stripe up top, facts first, then the details */
-  :root {
-    --bg: #fbf8f3;
-    --fg: #22180f;
-    --muted: #6b5d4f;
-    --line: #ebe2d5;
-    --panel: #ffffff;
-    --red: #e2392e;
-    --gold: #e8a512;
-    --link: #c2410c;
-    --display: "Barlow Condensed", "Arial Narrow", Arial, sans-serif;
-    --body: "Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --bg: #17110b; --fg: #f5ede3; --muted: #b3a493; --line: #33281d; --panel: #211910;
-      --red: #ff5a4e; --gold: #ffc43d; --link: #ff9f5a; color-scheme: dark;
-    }
-  }
-  :root[data-theme="dark"] {
-    --bg: #17110b; --fg: #f5ede3; --muted: #b3a493; --line: #33281d; --panel: #211910;
-    --red: #ff5a4e; --gold: #ffc43d; --link: #ff9f5a; color-scheme: dark;
-  }
-  *{box-sizing:border-box}
-  body { margin: 0;
-    background: var(--bg); color: var(--fg);
-    font-family: var(--body); font-size: 16px; line-height: 1.65;
-  }
-  .stripe { display: grid; grid-template-columns: 1fr 1fr; height: 6px; }
-  .stripe span:first-child { background: var(--red); }
-  .stripe span:last-child { background: var(--gold); }
-  main {
-    max-width: 44rem; margin: 0 auto;
-    padding-block: 2.5rem 4rem;
-    padding-left: max(16px, env(safe-area-inset-left, 0px));
-    padding-right: max(16px, env(safe-area-inset-right, 0px));
-    display: grid; gap: 2rem;
-  }
-  header { display: grid; gap: .4rem; }
-  .eyebrow { font-size: .78rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
-  h1 {
-    font-family: var(--display); font-style: italic; font-weight: 800;
-    font-size: clamp(2.4rem, 7vw, 3.4rem); line-height: 1; margin: 0; text-wrap: balance;
-  }
-  h1 em { font-style: italic; color: var(--red); }
-  .meta { color: var(--muted); font-size: .92rem; }
-  h2 {
-    font-family: var(--display); font-style: italic; font-weight: 700;
-    font-size: 1.6rem; line-height: 1.1; margin: 0 0 .5rem; text-wrap: balance;
-  }
-  section p, section ul { margin: 0 0 .75rem; }
-  section ul { padding-left: 1.2rem; }
-  li { margin-bottom: .35rem; }
-  .summary {
-    background: var(--panel); border: 1px solid var(--line); border-radius: 10px;
-    padding: 1.1rem 1.25rem; display: grid; gap: .6rem;
-  }
-  .summary h2 { margin-bottom: 0; }
-  .facts { list-style: none; padding: 0; margin: 0; display: grid; gap: .55rem; }
-  .facts li { display: grid; grid-template-columns: 1.1rem 1fr; gap: .6rem; margin: 0; }
-  .dot { width: .6rem; height: .6rem; border-radius: 50%; margin-top: .55rem; background: var(--gold); }
-  .facts li:nth-child(odd) .dot { background: var(--red); }
-  .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; }
-  table { border-collapse: collapse; width: 100%; min-width: 30rem; font-size: .94rem; }
-  th, td { text-align: left; padding: .65rem .85rem; border-bottom: 1px solid var(--line); vertical-align: top; }
-  th { font-size: .75rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); background: var(--panel); }
-  tr:last-child td { border-bottom: 0; }
-  a { color: var(--link); text-underline-offset: 2px; }
-  a:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; border-radius: 2px; }
-  code { font-size: .92em; }
-  .contact { font-weight: 600; user-select: all; }
-  .steps { counter-reset: s; list-style: none; padding: 0; margin: 0 0 .75rem; display: grid; gap: .55rem; }
-  .steps li { counter-increment: s; display: grid; grid-template-columns: 1.9rem 1fr; gap: .6rem; margin: 0; }
-  .steps li::before { content: counter(s); width: 1.6rem; height: 1.6rem; border-radius: 50%; background: var(--red); color: #fff;
-    font-weight: 700; font-size: .85rem; display: grid; place-items: center; margin-top: .1rem; }
-  .muted { color: var(--muted); }
-</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&family=Public+Sans:wght@400;600&family=Sora:wght@700;800&display=swap">
+<link rel="stylesheet" href="/assets/legal.css">
 </head>
-<body>
-
-<div class="stripe" aria-hidden="true"><span></span><span></span></div>
-<main>
-  <header>
-    <div class="eyebrow">More Burgers &middot; Your data</div>
-    <h1>Delete your <em>data</em></h1>
-    <div class="meta">Android game by Ayush Jha &middot; package <code>com.moreburgers.game</code></div>
+<body class="g-mb">
+<a class="skip" href="#main">Skip to content</a>
+<div class="world" aria-hidden="true"><div class="glow"></div><div class="grain"></div></div>
+<nav class="nav" aria-label="Main">
+  <a class="brand" href="/" aria-label="TEKTONIC home">
+    <svg viewBox="88 100 352 300" aria-hidden="true"><path d="M116 129H400V213H304V373H212V213H116Z" fill="#f4f2f5"/><path d="M190 284 430 138" stroke="#ff7a2e" stroke-width="10"/></svg>
+    TEKTONIC
+  </a>
+  <ul>
+    <li class="opt"><a href="/#games">Games</a></li>
+    <li class="opt"><a href="/#studio">Studio</a></li>
+    <li><a class="btn btn-hot" href="/#contact">Get in touch</a></li>
+  </ul>
+</nav>
+<main id="main" tabindex="-1" class="page">
+  <header class="plate rv">
+    <img class="logo" src="/assets/mb-logo.webp" width="720" height="323" alt="More Burgers">
+    <div class="head">
+      <p class="eyebrow">More Burgers &middot; Your data</p>
+      <h1>Delete your data</h1>
+      <p class="meta"><span>Android game by Ayush Jha</span><span>package <code>com.moreburgers.game</code></span></p>
+      <nav class="switch" aria-label="More Burgers pages"><a href="/moreburgers/">Privacy policy</a><a href="/moreburgers/delete-account/" aria-current="page">Delete data</a></nav>
+    </div>
   </header>
+<div class="doc">
+  <nav class="toc" aria-label="On this page">
+    <p>On this page</p>
+    <a href="#delete"><span>01</span>Delete everything the game saved</a>
+    <a href="#purchases"><span>02</span>Purchases and ads</a>
+    <a href="#questions"><span>03</span>Questions</a>
+  </nav>
+  <article>
+    <div class="short rv">
+      <h2>There's no account to delete</h2>
+      <ul class="facts">
+        <li>More Burgers has no accounts, no sign-in and no cloud save. We don't hold any data about you on a server.</li>
+        <li>Everything the game saves (your restaurant, money, diamonds, levels, skins, boosts and settings) is stored only on your phone.</li>
+      </ul>
+    </div>
 
-  <div class="summary">
-    <h2>There's no account to delete</h2>
-    <ul class="facts">
-      <li><span class="dot"></span><span>More Burgers has no accounts, no sign-in and no cloud save. We don't hold any data about you on a server.</span></li>
-      <li><span class="dot"></span><span>Everything the game saves (your restaurant, money, diamonds, levels, skins, boosts and settings) is stored only on your phone.</span></li>
-    </ul>
-  </div>
-
-  <section>
-    <h2>Delete everything the game saved</h2>
+    <section id="delete" class="rv">
+    <h2><span class="n">01</span>Delete everything the game saved</h2>
     <p>Either of these permanently removes all More Burgers data from your phone:</p>
     <ol class="steps">
       <li><span><strong>Uninstall the game.</strong> Long-press the More Burgers icon and choose Uninstall, or uninstall it from the Google Play Store app.</span></li>
       <li><span><strong>Or keep the game and start over.</strong> Open your phone's Settings &rsaquo; Apps &rsaquo; More Burgers &rsaquo; Storage, then tap Clear storage (called Clear data on some phones).</span></li>
     </ol>
-    <p class="muted">This can't be undone: your progress is gone for good. Things you bought with real money that stay yours for good (skins, the Burger Crown and the Scooter) come back when you reinstall and open the game with the same Google account. Diamonds and Cat Coins you spent or still had are not restored.</p>
-  </section>
+    <p class="note warn">This can't be undone: your progress is gone for good. Things you bought with real money that stay yours for good (skins, the Burger Crown and the Scooter) come back when you reinstall and open the game with the same Google account. Diamonds and Cat Coins you spent or still had are not restored.</p>
+    </section>
 
-  <section>
-    <h2>Purchases and ads</h2>
+    <section id="purchases" class="rv">
+    <h2><span class="n">02</span>Purchases and ads</h2>
     <p>Purchases are handled by Google Play and stay in your Google Play order history, which is managed by Google. Ads are served by Google AdMob, which is set up for children and doesn't use your advertising ID. See the <a href="/moreburgers/">privacy policy</a> for details.</p>
-  </section>
+    </section>
 
-  <section>
-    <h2>Questions</h2>
+    <section id="questions" class="rv">
+    <h2><span class="n">03</span>Questions</h2>
     <p>Email <span class="contact">contact@jhaayush.com</span> and we'll help.</p>
-  </section>
-
-  <p class="meta"><a href="/">TEKTONIC</a> &middot; <a href="/moreburgers/">Privacy policy</a></p>
+    </section>
+  </article>
+</div>
 </main>
-
+<footer>
+  <div class="wrap">
+    <span>&copy; 2026 TEKTONIC Games. Made by Ayush Jha.</span>
+    <span><a href="/policechase/">Police Chase privacy</a> &middot; <a href="/moreburgers/">More Burgers privacy</a> &middot; <a href="mailto:contact@jhaayush.com">Email</a></span>
+  </div>
+</footer>
+<script src="/assets/legal.js" defer></script>
 </body>
 </html>
