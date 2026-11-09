@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Privacy policy for the More Burgers Android game.">
+<title>More Burgers Privacy Policy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@1,700;1,800&family=Public+Sans:wght@400;600;700&display=swap">
+<style>
+  /* Same layout as the Police Chase policy: one readable column, a stripe up top, facts first, then the details */
+  :root {
+    --bg: #fbf8f3;
+    --fg: #22180f;
+    --muted: #6b5d4f;
+    --line: #ebe2d5;
+    --panel: #ffffff;
+    --red: #e2392e;
+    --gold: #e8a512;
+    --link: #c2410c;
+    --display: "Barlow Condensed", "Arial Narrow", Arial, sans-serif;
+    --body: "Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #17110b; --fg: #f5ede3; --muted: #b3a493; --line: #33281d; --panel: #211910;
+      --red: #ff5a4e; --gold: #ffc43d; --link: #ff9f5a; color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #17110b; --fg: #f5ede3; --muted: #b3a493; --line: #33281d; --panel: #211910;
+    --red: #ff5a4e; --gold: #ffc43d; --link: #ff9f5a; color-scheme: dark;
+  }
+  *{box-sizing:border-box}
+  body { margin: 0;
+    background: var(--bg); color: var(--fg);
+    font-family: var(--body); font-size: 16px; line-height: 1.65;
+  }
+  .stripe { display: grid; grid-template-columns: 1fr 1fr; height: 6px; }
+  .stripe span:first-child { background: var(--red); }
+  .stripe span:last-child { background: var(--gold); }
+  main {
+    max-width: 44rem; margin: 0 auto;
+    padding-block: 2.5rem 4rem;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    display: grid; gap: 2rem;
+  }
+  header { display: grid; gap: .4rem; }
+  .eyebrow { font-size: .78rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+  h1 {
+    font-family: var(--display); font-style: italic; font-weight: 800;
+    font-size: clamp(2.4rem, 7vw, 3.4rem); line-height: 1; margin: 0; text-wrap: balance;
+  }
+  h1 em { font-style: italic; color: var(--red); }
+  .meta { color: var(--muted); font-size: .92rem; }
+  h2 {
+    font-family: var(--display); font-style: italic; font-weight: 700;
+    font-size: 1.6rem; line-height: 1.1; margin: 0 0 .5rem; text-wrap: balance;
+  }
+  section p, section ul { margin: 0 0 .75rem; }
+  section ul { padding-left: 1.2rem; }
+  li { margin-bottom: .35rem; }
+  .summary {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 10px;
+    padding: 1.1rem 1.25rem; display: grid; gap: .6rem;
+  }
+  .summary h2 { margin-bottom: 0; }
+  .facts { list-style: none; padding: 0; margin: 0; display: grid; gap: .55rem; }
+  .facts li { display: grid; grid-template-columns: 1.1rem 1fr; gap: .6rem; margin: 0; }
+  .dot { width: .6rem; height: .6rem; border-radius: 50%; margin-top: .55rem; background: var(--gold); }
+  .facts li:nth-child(odd) .dot { background: var(--red); }
+  .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; }
+  table { border-collapse: collapse; width: 100%; min-width: 30rem; font-size: .94rem; }
+  th, td { text-align: left; padding: .65rem .85rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-size: .75rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); background: var(--panel); }
+  tr:last-child td { border-bottom: 0; }
+  a { color: var(--link); text-underline-offset: 2px; }
+  a:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; border-radius: 2px; }
+  code { font-size: .92em; }
+  .contact { font-weight: 600; user-select: all; }
+</style>
+</head>
+<body>
+
+<div class="stripe" aria-hidden="true"><span></span><span></span></div>
+<main>
+  <header>
+    <div class="eyebrow">Privacy policy</div>
+    <h1>More <em>Burgers</em></h1>
+    <div class="meta">Android game by Ayush Jha &middot; package <code>com.moreburgers.game</code> &middot; effective 9 November 2026</div>
+  </header>
+
+  <div class="summary">
+    <h2>The short version</h2>
+    <ul class="facts">
+      <li><span class="dot"></span><span>More Burgers is made for children and families. We don't collect any personal information: no accounts, no sign-in, no chat.</span></li>
+      <li><span class="dot"></span><span>Your restaurant, money, levels, skins and settings are saved only on your phone. We never receive them.</span></li>
+      <li><span class="dot"></span><span>Ads only play when a player chooses to watch one for a reward. They are family-safe and never personalised, and the game doesn't use the advertising ID.</span></li>
+      <li><span class="dot"></span><span>Optional purchases are handled by Google Play. We never see card or bank details.</span></li>
+    </ul>
+  </div>
+
+  <section>
+    <h2>Who we are</h2>
+    <p>More Burgers is made by Ayush Jha, an independent developer ("we", "us"). This policy explains what information the game and the services built into it use when you play, and the choices you have.</p>
+  </section>
+
+  <section>
+    <h2>What we collect</h2>
+    <p>We don't collect personal information ourselves. The game never asks for a name, email address, phone number, photos or location, and players can't share anything with each other.</p>
+    <p>Your progress (money, diamonds, levels, unlocked machines, skins, boosts and settings) is saved on your phone only. It isn't backed up or sent to us. Uninstalling the game deletes it.</p>
+  </section>
+
+  <section>
+    <h2>Services from other companies</h2>
+    <p>The game uses these services, which handle information under their own privacy policies:</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Service</th><th>What it's for</th><th>What it may collect</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>Google AdMob</strong></td>
+            <td>Optional rewarded videos (for example, a free boost or double reward)</td>
+            <td>Every ad request is marked as child-directed and rated G, so only family-safe, non-personalised ads are shown. AdMob may use technical information such as device type, operating system, IP address and approximate location to deliver ads, count views and prevent fraud. The advertising ID is not used: the game removes that permission.</td>
+          </tr>
+          <tr>
+            <td><strong>Google Play Billing</strong></td>
+            <td>Optional purchases of diamonds, Cat Coins, skins and boosts</td>
+            <td>Purchase details, handled by Google. The game only receives confirmation of which item was bought, so it can be delivered.</td>
+          </tr>
+          <tr>
+            <td><strong>Unity</strong></td>
+            <td>The game engine, and its purchase service that connects the game to Google Play</td>
+            <td>Basic technical data such as device model, operating system version and crash information</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Read more in <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's privacy policy</a>, <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">how Google uses data from apps that use its services</a> and <a href="https://unity.com/legal/game-player-and-app-user-privacy-policy" target="_blank" rel="noopener">Unity's player privacy policy</a>.</p>
+  </section>
+
+  <section>
+    <h2>Children</h2>
+    <p>More Burgers is designed for children. We don't knowingly collect personal information from anyone, and the services above are set up for child-directed use as Google Play's Families policy requires. If you're a parent and think your child's information has been collected, contact us and we will help remove it.</p>
+  </section>
+
+  <section>
+    <h2>Purchases</h2>
+    <p>The game is free to play. It offers optional real-money purchases of in-game currency, skins and boosts. You can turn purchases off, or require a password for them, in the Google Play Store app under Settings &rsaquo; Authentication &rsaquo; Require authentication for purchases.</p>
+  </section>
+
+  <section>
+    <h2>Your choices</h2>
+    <ul>
+      <li><strong>Ads:</strong> ads only play when you tap a button to watch one. You can always skip the reward instead.</li>
+      <li><strong>Delete your data:</strong> everything the game saves is on your phone, so uninstalling the game deletes it. Purchases stay in your Google Play order history, which is managed by Google.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Security</h2>
+    <p>Information sent between the game and Google's and Unity's services is encrypted in transit. Progress saved on your phone is protected by your phone's own security.</p>
+  </section>
+
+  <section>
+    <h2>Changes to this policy</h2>
+    <p>If we change how the game handles information, we will update this page and change the effective date at the top.</p>
+  </section>
+
+  <section>
+    <h2>Contact</h2>
+    <p>Questions about this policy can be sent to <span class="contact">contact@jhaayush.com</span>.</p>
+  </section>
+  <p class="meta"><a href="/">TEKTONIC</a> &middot; <a href="/moreburgers/delete-account/">Delete your data</a></p>
+</main>
+
+</body>
+</html>
