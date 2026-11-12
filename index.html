@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>TEKTONIC Games</title>
-<meta name="description" content="TEKTONIC is an independent mobile game studio. Meet Police Chase and More Burgers, both coming soon to Google Play.">
+<meta name="description" content="TEKTONIC is an independent mobile game studio. Meet Police Chase, More Burgers and Igloo IQ, all coming soon to Google Play.">
 <meta name="theme-color" content="#15100e">
 <meta property="og:title" content="TEKTONIC Games">
-<meta property="og:description" content="An independent mobile game studio. Police Chase and More Burgers, coming soon to Google Play.">
+<meta property="og:description" content="An independent mobile game studio. Police Chase, More Burgers and Igloo IQ, coming soon to Google Play.">
 <meta property="og:type" content="website">
 <!-- DEPLOY STEP: absolute URLs for the live site -->
 <meta property="og:url" content="https://jhaayush.com/">
@@ -161,9 +161,18 @@ h2{font-family:var(--display);font-weight:800;font-size:clamp(2rem,5vw,3.6rem);l
 .mb .icon{flex:none;width:76px;border-radius:18px;box-shadow:0 10px 26px -10px rgba(0,0,0,.7)}
 .mb .logo{width:min(340px,calc(100% - 92px))}
 .mb .head{display:flex;align-items:center;gap:1rem}
+.iq{grid-template-columns:1.15fr 1fr}
+.iq .phones-wrap{order:-1}
+.iq .phones{background:linear-gradient(160deg,#1b4a72,#0f2236 60%);clip-path:polygon(0 0,100% 8%,100% 100%,0 100%)}
+.iq .phones .phone:first-child{transform:rotate(-2deg)}
+.iq .phones .phone:last-child{transform:translateY(-8%) rotate(2.5deg)}
+.iq .buddy{right:auto;left:-4%;bottom:-6%;width:30%}
+.iq .icon{flex:none;width:76px;padding:9px;border-radius:18px;background:linear-gradient(160deg,#cdeeff,#7cc4f5);box-shadow:0 10px 26px -10px rgba(0,0,0,.7)}
+.iq .logo{width:min(320px,calc(100% - 92px))}
+.iq .head{display:flex;align-items:center;gap:1rem}
 @media (max-width:860px){
-  .pc,.mb{grid-template-columns:1fr}
-  .mb .phones-wrap{order:2}
+  .pc,.mb,.iq{grid-template-columns:1fr}
+  .mb .phones-wrap,.iq .phones-wrap{order:2}
   .strip{grid-template-columns:repeat(3,72%);overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:.6rem;margin-right:-16px;padding-right:16px}
   .strip img{scroll-snap-align:start}
   .pc .strip img:nth-child(2){transform:none}
@@ -223,6 +232,8 @@ footer a:hover{color:var(--fg)}
   .cut img{transform:none}
   .phones .phone:first-child{transform:translateY(-8%) rotate(-2.5deg)}
   .phones .phone:last-child{transform:rotate(2deg)}
+  .iq .phones .phone:first-child{transform:rotate(-2deg)}
+  .iq .phones .phone:last-child{transform:translateY(-8%) rotate(2.5deg)}
 }
 body.paused *,body.paused *::before,body.paused *::after{animation-play-state:paused!important}
 </style>
@@ -295,7 +306,7 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
           </div>
           <div class="band" data-a="0.5" data-b="1">
             <p class="big"><span class="sr">Small, bright games for your phone.</span><span class="splitw" aria-hidden="true">Small, bright games for your phone.</span></p>
-            <p class="sub late">An independent studio making simple, colourful games for Android. Two are on the way.</p>
+            <p class="sub late">An independent studio making simple, colourful games for Android. Three are on the way.</p>
             <div class="row late"><a class="textlink" href="#games">Meet the games</a></div>
           </div>
         </div>
@@ -308,7 +319,7 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
     <div class="wrap">
       <header class="games-head rv">
         <p class="kicker part">Our games</p>
-        <h2 class="part">Two games, both on the way to Google&nbsp;Play.</h2>
+        <h2 class="part">Three games, all on the way to Google&nbsp;Play.</h2>
       </header>
 
       <article class="plate pc rv" aria-labelledby="pc-title">
@@ -345,6 +356,24 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
           <img class="buddy" src="assets/mb-buddy.webp" width="512" height="492" alt="" loading="lazy">
         </div>
       </article>
+
+      <article class="plate iq rv" aria-labelledby="iq-title">
+        <div class="info">
+          <h3 id="iq-title" class="sr">Igloo IQ</h3>
+          <div class="head part"><img class="icon" src="assets/iq-icon.png" width="256" height="251" alt="" loading="lazy"><img class="logo" src="assets/iq-logo.png" width="720" height="262" alt="" loading="lazy"></div>
+          <div class="tag part"><b>Android</b><span>Coming soon</span></div>
+          <p class="tagline part">One penguin per row. One per column. No touching.</p>
+          <p class="part">A calm logic puzzle on an icy grid. Place one penguin in every row, column and colour, without any two touching. Levels get trickier as you go, with a daily challenge and friendly hints when you get stuck.</p>
+          <div class="legal part"><a href="/iglooiq/">Privacy policy</a></div>
+        </div>
+        <div class="phones-wrap part">
+        <div class="phones">
+          <div class="phone"><img src="assets/iq-shot-1.jpg" width="540" height="1200" alt="Igloo IQ home screen: a penguin under the Igloo IQ title, with Level 14 and Daily Challenge buttons." loading="lazy"></div>
+          <div class="phone"><img src="assets/iq-shot-2.jpg" width="540" height="1200" alt="An Igloo IQ level: a grid of coloured zones with three penguins placed, one per row, column and colour." loading="lazy"></div>
+        </div>
+          <img class="buddy" src="assets/iq-igloo.png" width="420" height="320" alt="" loading="lazy">
+        </div>
+      </article>
     </div>
   </section>
 
@@ -372,6 +401,7 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
       <div class="papers part" aria-label="Privacy and data for each game">
         <div class="paper"><h3>Police Chase</h3><a href="/policechase/">Privacy policy</a><a href="/policechase/delete-account/">Delete account</a></div>
         <div class="paper"><h3>More Burgers</h3><a href="/moreburgers/">Privacy policy</a><a href="/moreburgers/delete-account/">Delete data</a></div>
+        <div class="paper"><h3>Igloo IQ</h3><a href="/iglooiq/">Privacy policy</a></div>
       </div>
     </div>
   </section>
