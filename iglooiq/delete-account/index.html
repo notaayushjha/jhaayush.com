@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Delete Igloo IQ Account</title>
+<meta name="description" content="Delete your Igloo IQ account and progress backup.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#15100e">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2315100e'/%3E%3Cpath d='M12 16h40v12H39v22H27V28H12z' fill='%23f4f2f5'/%3E%3Cpath d='M24 41 54 22' stroke='%23ff7a2e' stroke-width='2.4'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&family=Public+Sans:wght@400;600&family=Sora:wght@700;800&display=swap">
+<link rel="stylesheet" href="/assets/legal.css">
+<style>
+  [hidden]{display:none!important}
+  .signin{display:grid;gap:.9rem}
+  .signin h2{margin-bottom:0}
+  .signin p{margin:0}
+  .gbtn{min-height:44px;width:100%;max-width:400px}
+  .fb{display:flex;align-items:center;justify-content:center;gap:.6rem;width:100%;max-width:400px;min-height:44px;padding:.55rem 1.1rem;border:0;border-radius:999px;
+    background:#1877f2;color:#fff;font:inherit;font-weight:600;font-size:.95rem;cursor:pointer;transition:transform .3s var(--out),box-shadow .3s var(--out)}
+  .fb:hover{transform:translateY(-2px);box-shadow:0 10px 30px -8px rgba(24,119,242,.6)}
+  .fb:disabled{opacity:.6;cursor:progress;transform:none;box-shadow:none}
+  .fb svg{width:22px;height:22px;flex:none}
+  .who{margin:0;padding:.85rem 1rem;border-radius:12px;background:var(--bg3);border:1px solid var(--line);color:var(--muted);overflow-wrap:anywhere}
+  .who strong{color:var(--fg)}
+  .plain{justify-self:center;background:none;border:0;padding:.5rem .2rem;min-height:44px;color:var(--muted);font:inherit;font-size:.92rem;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+  .plain:hover{color:var(--fg)}
+  .card .msg{margin-top:1rem}
+</style>
+</head>
+<body class="g-iq">
+<a class="skip" href="#main">Skip to content</a>
+<div class="world" aria-hidden="true"><div class="glow"></div><div class="grain"></div></div>
+<nav class="nav" aria-label="Main">
+  <a class="brand" href="/" aria-label="TEKTONIC home">
+    <svg viewBox="88 100 352 300" aria-hidden="true"><path d="M116 129H400V213H304V373H212V213H116Z" fill="#f4f2f5"/><path d="M190 284 430 138" stroke="#ff7a2e" stroke-width="10"/></svg>
+    TEKTONIC
+  </a>
+  <ul>
+    <li class="opt"><a href="/#games">Games</a></li>
+    <li class="opt"><a href="/#studio">Studio</a></li>
+    <li><a class="btn btn-hot" href="/#contact">Get in touch</a></li>
+  </ul>
+</nav>
+<main id="main" tabindex="-1" class="page">
+  <header class="plate rv">
+    <img class="logo" src="/assets/iq-logo.png" width="720" height="262" alt="Igloo IQ">
+    <div class="head">
+      <p class="eyebrow">Igloo IQ &middot; Account</p>
+      <h1>Delete your account</h1>
+      <nav class="switch" aria-label="Igloo IQ pages"><a href="/iglooiq/">Privacy policy</a><a href="/iglooiq/delete-account/" aria-current="page">Delete account</a></nav>
+    </div>
+  </header>
+<div class="doc solo">
+  <div class="split">
+    <section class="rv">
+      <h2>What gets deleted</h2>
+      <p>Sign in with the Google or Facebook account you use in Igloo IQ to permanently delete your Igloo IQ account. This removes:</p>
+      <ul class="removes">
+        <li>your Igloo IQ player ID and its link to your Google or Facebook account</li>
+        <li>your progress backup: level, scores, streaks, boosters, avatar, frames and nickname</li>
+      </ul>
+      <p class="note warn">This can't be undone. Your Google or Facebook account itself isn't affected. Progress saved on a phone stays on that phone until you uninstall the game.</p>
+    </section>
+
+    <div class="card rv">
+      <div id="pick" class="signin">
+        <h2>Sign in to delete</h2>
+        <p class="muted">Use the same account you signed in with in the game.</p>
+        <div id="gbtn" class="gbtn"></div>
+        <button type="button" id="fb" class="fb">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#fff"/><path d="M15.1 24v-9.3h3.1l.5-3.6h-3.6V8.8c0-1 .3-1.8 1.8-1.8h1.9V3.8c-.3 0-1.5-.1-2.8-.1-2.8 0-4.6 1.7-4.6 4.8v2.6H8.3v3.6h3.1V24z" fill="#1877f2"/></svg>
+          Continue with Facebook
+        </button>
+        <noscript><p class="note">Signing in here needs JavaScript. You can still delete your account in the game or by email (see below).</p></noscript>
+      </div>
+
+      <form id="sure" hidden novalidate>
+        <h2>Delete this account?</h2>
+        <p class="who" id="who"></p>
+        <label class="check">
+          <input type="checkbox" id="confirm">
+          <span>I understand my Igloo IQ account and progress backup will be deleted forever.</span>
+        </label>
+        <button type="submit" id="go" class="btn danger">Delete my account</button>
+        <button type="button" id="other" class="plain">Use a different account</button>
+      </form>
+
+      <div class="msg" id="msg" role="status" aria-live="polite"></div>
+
+      <div class="done" id="done">
+        <div class="tick" aria-hidden="true">&#10003;</div>
+        <h2>Account deleted</h2>
+        <p>Your Igloo IQ account and its progress backup have been deleted.</p>
+        <p class="muted" id="unlinked" hidden></p>
+        <p class="muted">Progress saved on a phone stays there until you uninstall the game. Signing in again in the game starts a new account.</p>
+      </div>
+    </div>
+  </div>
+
+  <section class="card rv" style="margin-top:clamp(2rem,5vw,3rem)">
+    <h2>Other ways to delete</h2>
+    <ol class="steps">
+      <li><span><strong>In the game.</strong> While you're signed in, open Settings &rsaquo; Save your progress &rsaquo; Delete account. This deletes your account and backup, then clears your progress on that phone.</span></li>
+      <li><span><strong>By email.</strong> Write to <span class="contact">contact@jhaayush.com</span> with the subject "Delete my Igloo IQ account". Say whether you sign in with Google or Facebook, and include the email address of that Google account or the name on that Facebook account. We delete the account and its backup within 30 days and reply to confirm.</span></li>
+      <li><span><strong>Played as a guest?</strong> There's no account and nothing stored online. Uninstall the game, or use Delete account in the game, to remove your progress from the phone.</span></li>
+    </ol>
+    <p class="note">Removing Igloo IQ under Apps and websites in Facebook, or under Third-party connections in your Google Account, disconnects the game but doesn't delete your Igloo IQ account. Use one of the ways on this page.</p>
+    <p class="muted" style="margin:1rem 0 0"><a href="/iglooiq/">Privacy policy</a></p>
+  </section>
+</div>
+</main>
+<footer>
+  <div class="wrap">
+    <span>&copy; 2026 TEKTONIC Games. Made by Ayush Jha.</span>
+    <span><a href="/policechase/">Police Chase privacy</a> &middot; <a href="/moreburgers/">More Burgers privacy</a> &middot; <a href="/iglooiq/">Igloo IQ privacy</a> &middot; <a href="mailto:contact@jhaayush.com">Email</a></span>
+  </div>
+</footer>
+<script src="/assets/legal.js" defer></script>
+<script>
+(function () {
+  // the same IDs as GameConfig in the game: Unity project, Google web client, Meta app
+  var PROJECT = "9e17bdd2-85d5-47cb-9ca1-dd77010d9cf9";
+  var GOOGLE_CLIENT = "1032003339974-c9ubm37fq4qmorbi3ik27oad1mobu1nd.apps.googleusercontent.com";
+  var FACEBOOK_APP = "1085343357874200";
+  var AUTH = "https://player-auth.services.api.unity.com/v1";
+  var SAVE = "https://cloud-save.services.api.unity.com/v1/data/projects/" + PROJECT + "/players/";
+
+  function $(id) { return document.getElementById(id); }
+  var pick = $("pick"), sure = $("sure"), msg = $("msg"), go = $("go"), fb = $("fb");
+  var session = null;   // { token, player, provider, sub }
+  var fbReady = false;
+
+  function show(text, kind) { msg.textContent = text; msg.className = "msg show " + (kind || "err"); }
+  function clear() { msg.textContent = ""; msg.className = "msg"; }
+  function headers(token) {
+    var h = { "Content-Type": "application/json", "ProjectId": PROJECT, "UnityEnvironment": "production" };
+    if (token) h.Authorization = "Bearer " + token;
+    return h;
+  }
+
+  // reads the email and account ID out of Google's sign-in token (only to show which account this is)
+  function claims(jwt) {
+    try {
+      var part = jwt.split(".")[1].replace(/-/g, "+").replace(/_/g, "/");
+      while (part.length % 4) part += "=";
+      var bytes = atob(part);
+      try { bytes = new TextDecoder().decode(Uint8Array.from(bytes, function (ch) { return ch.charCodeAt(0); })); } catch (_) {}
+      return JSON.parse(bytes);
+    } catch (_) { return {}; }
+  }
+
+  // finds the Igloo IQ account for this Google or Facebook token, without ever creating one
+  async function findAccount(provider, token, label) {
+    fb.disabled = true;
+    show("Looking for your Igloo IQ account...", "info");
+    try {
+      var r = await fetch(AUTH + "/authentication/external-token/" + provider, {
+        method: "POST", headers: headers(), body: JSON.stringify({ idProvider: provider, token: token, signInOnly: true })
+      });
+      if (!r.ok) {
+        var body = "";
+        try { body = await r.text(); } catch (_) {}
+        if (r.status === 404 || /not.?found/i.test(body)) {
+          show("There's no Igloo IQ account for this " + label + " account. If you signed in with a different account in the game, try that one. If you played as a guest, nothing is stored online.");
+        } else {
+          show("Couldn't sign in to Igloo IQ (error " + r.status + "). Please try again later, or email contact@jhaayush.com.");
+        }
+        return null;
+      }
+      var s = await r.json();
+      var player = s.userId || (s.user && s.user.id);
+      if (!s.idToken || !player) { show("Something went wrong signing in. Please try again, or email contact@jhaayush.com."); return null; }
+      return { token: s.idToken, player: player };
+    } catch (_) {
+      show("Couldn't connect. Check your internet and try again, or email contact@jhaayush.com.");
+      return null;
+    } finally {
+      fb.disabled = false;
+    }
+  }
+
+  function ready(s, provider, label, name) {
+    session = s; session.provider = provider;
+    var who = $("who");
+    who.textContent = "";
+    who.appendChild(document.createTextNode("Signed in with "));
+    var p = document.createElement("strong"); p.textContent = label; who.appendChild(p);
+    if (name) {
+      who.appendChild(document.createTextNode(" as "));
+      var n = document.createElement("strong"); n.textContent = name; who.appendChild(n);
+    }
+    who.appendChild(document.createTextNode("."));
+    $("confirm").checked = false;
+    clear();
+    pick.hidden = true;
+    sure.hidden = false;
+    $("confirm").focus();
+  }
+
+  // ---- Google: Google's own button hands back an ID token for the game's web client
+  function onGoogle(response) {
+    var token = response && response.credential;
+    if (!token) { show("Google sign-in didn't finish. Please try again."); return; }
+    var c = claims(token);
+    findAccount("google.com", token, "Google").then(function (s) {
+      if (!s) return;
+      s.sub = c.sub;
+      ready(s, "google", "Google", c.email || null);
+    });
+  }
+
+  window.onGoogleLibraryLoad = function () {
+    try {
+      google.accounts.id.initialize({ client_id: GOOGLE_CLIENT, callback: onGoogle, auto_select: false, ux_mode: "popup" });
+      var slot = $("gbtn");
+      google.accounts.id.renderButton(slot, {
+        type: "standard", theme: "outline", size: "large", text: "signin_with", shape: "pill", logo_alignment: "left",
+        width: Math.max(200, Math.min(400, Math.floor(slot.clientWidth || 320)))
+      });
+    } catch (_) { googleMissing(); }
+  };
+  function googleMissing() {
+    var slot = $("gbtn");
+    if (slot.childElementCount) return;
+    slot.className = "note";
+    slot.textContent = "Google sign-in couldn't load. Check your connection or turn off content blockers for this page, or use another way below.";
+  }
+  setTimeout(function () { if (!window.google || !google.accounts) googleMissing(); }, 10000);
+
+  // ---- Facebook: the JS SDK's login dialog hands back an access token for the game's Meta app
+  window.fbAsyncInit = function () {
+    FB.init({ appId: FACEBOOK_APP, cookie: false, xfbml: false, version: "v23.0" });
+    fbReady = true;
+  };
+  fb.addEventListener("click", function () {
+    if (!fbReady || !window.FB) { show("Facebook sign-in is still loading. Try again in a moment, or use another way below."); return; }
+    clear();
+    FB.login(function (response) {
+      var auth = response && response.authResponse;
+      if (!auth || !auth.accessToken) { show("Facebook sign-in didn't finish. Please try again."); return; }
+      var token = auth.accessToken;
+      findAccount("facebook.com", token, "Facebook").then(function (s) {
+        if (!s) return;
+        FB.api("/me", { fields: "name", access_token: token }, function (me) {
+          ready(s, "facebook", "Facebook", me && !me.error && me.name ? me.name : null);
+        });
+      });
+    }, { scope: "public_profile" });
+  });
+
+  $("other").addEventListener("click", function () {
+    session = null;
+    clear();
+    sure.hidden = true;
+    pick.hidden = false;
+    try { google.accounts.id.disableAutoSelect(); } catch (_) {}
+  });
+
+  // ---- delete: the backup first, then the account (as the game does)
+  sure.addEventListener("submit", async function (e) {
+    e.preventDefault();
+    if (!session) return;
+    if (!$("confirm").checked) { show("Tick the box to confirm you want to delete your account."); return; }
+    go.disabled = true;
+    go.textContent = "Deleting...";
+    try {
+      show("Deleting your progress backup...", "info");
+      try {
+        await fetch(SAVE + encodeURIComponent(session.player) + "/items", { method: "DELETE", headers: headers(session.token) });
+      } catch (_) { /* deleting the account below also removes the player's data */ }
+
+      show("Deleting your account...", "info");
+      var d = await fetch(AUTH + "/users/" + encodeURIComponent(session.player), { method: "DELETE", headers: headers(session.token) });
+      if (!d.ok && d.status !== 404) {
+        show("Couldn't delete the account (error " + d.status + "). Please try again, or email contact@jhaayush.com.");
+        return;
+      }
+      var gone = session; session = null;
+      clear();
+      sure.hidden = true;
+      $("done").className = "done show";
+      disconnect(gone);
+    } catch (_) {
+      show("Couldn't connect. Check your internet and try again, or email contact@jhaayush.com.");
+    } finally {
+      go.disabled = false;
+      go.textContent = "Delete my account";
+    }
+  });
+
+  // also removes Igloo IQ from the player's Google or Facebook connections (best effort)
+  function disconnect(s) {
+    function said(text) { var p = $("unlinked"); p.textContent = text; p.hidden = false; }
+    try {
+      if (s.provider === "google" && s.sub) {
+        google.accounts.id.revoke(s.sub, function (r) { if (r && r.successful) said("Igloo IQ has also been removed from your Google account's connections."); });
+      } else if (s.provider === "facebook") {
+        FB.api("/me/permissions", "delete", function (r) { if (r && r.success) said("Igloo IQ has also been removed from your Facebook apps."); });
+      }
+    } catch (_) {}
+  }
+})();
+</script>
+<script src="https://accounts.google.com/gsi/client" async></script>
+<script async crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+</body>
+</html>
